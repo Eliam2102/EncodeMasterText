@@ -3,27 +3,19 @@ html(lang="en")
   head
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title Document
+    title Texto Cifrado
     link(rel="stylesheet", href="css/styles.css")
   body
-    nav
-      .navbar
-        .container.nav-container
-          input.checkbox(type='checkbox' name='' id='')
-          .hamburger-lines
-            span.line.line1
-            span.line.line2
-            span.line.line3
-          .logo
-            h1 EncodeMaster
-          .menu-items
-            li
-              a(href='#') Home
-            li
-              a(href='#') about
-            li
-              a(href='#') blogs
-            li
-              a(href='#') portfolio
-            li
-              a(href='#') contact
+    header
+      h1 Texto Cifrado
+    main
+      .input-container
+        textarea#input-text(rows="10", cols="50", placeholder="Introduce el texto a cifrar")
+        select#encryption-type
+          option(value="base64") Base64
+          option(value="cesar") Código César
+          option(value="sustitucion") Sustitución
+          option(value="hexadecimal") Hexadecimal a Decimal
+        button#encrypt-btn Cifrar
+      .output-container
+        textarea#output-text(rows="10", cols="50", placeholder="Resultado cifrado")
