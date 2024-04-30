@@ -1,0 +1,32 @@
+{
+  "name": "encodemaster",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "sass": "sass styles/sass/styles.sass:public/css/styles.css",
+    "sass-watch": "sass --watch styles/sass:public/css",
+    "start": "npm run sass && nodemon server.js"
+  },
+  "keywords": [],
+  "author": "Eliam Jesus Cauich Villanueva",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "connect": "^3.7.0",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "jquery": "^3.7.1",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.9.7",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "pug": "^3.0.2",
+    "sass": "^1.75.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
