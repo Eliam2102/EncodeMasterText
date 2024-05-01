@@ -1,21 +1,44 @@
-doctype html
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title Texto Cifrado
-    link(rel="stylesheet", href="css/styles.css")
-  body
-    header
-      h1 Texto Cifrado
-    main
-      .input-container
-        textarea#input-text(rows="10", cols="50", placeholder="Introduce el texto a cifrar")
-        select#encryption-type
-          option(value="base64") Base64
-          option(value="cesar") Código César
-          option(value="sustitucion") Sustitución
-          option(value="hexadecimal") Hexadecimal a Decimal
-        button#encrypt-btn Cifrar
-      .output-container
-        textarea#output-text(rows="10", cols="50", placeholder="Resultado cifrado")
+extends layout
+
+block content
+  doctype html
+  html(lang="en")
+    head
+      meta(charset="UTF-8")
+      meta(name="viewport", content="width=device-width, initial-scale=1.0")
+      title Texto Cifrado
+      link(rel="stylesheet", href="css/styles.css")
+    body.body-container
+      main.main-container
+        .input-container
+          textarea.input-text(id="input-text", rows="10", cols="50", placeholder="Introduce el texto a cifrar", maxlength="5000")
+          div.counter-container
+            span#char-count 0/5000
+          select#encryption-type.select
+            option(value="base64") Base64
+            option(value="cesar") Código César
+            option(value="sustitucion") Sustitución
+            option(value="hexadecimal") Hexadecimal a Decimal
+          button#encrypt-btn.button Cifrar
+        .output-container
+          textarea#output-text.output-text(rows="10", cols="50", placeholder="Resultado cifrado", readonly="")
+          button#copy-btn.button Copiar resultado
+      script.
+        document.addEventListener('DOMContentLoaded', function() {
+          const inputText = document.getElementById('input-text');
+          const charCount = document.getElementById('char-count');
+
+          inputText.addEventListener('input', function() {
+            const inputLength = inputText.value.length;
+            charCount.textContent = `${inputLength}/5000`;
+          });
+
+          const copyButton = document.getElementById('copy-btn');
+          const outputText = document.getElementById('output-text');
+
+          copyButton.addEventListener('click', function() {
+            outputText.select();
+            document.execCommand('copy');
+            alert('Texto copiado al portapapeles');
+          });
+        });

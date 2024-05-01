@@ -1,0 +1,21 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Historial de Codificaciones
+    link(rel="stylesheet", href="historial-styles.css")
+  body
+    header.historial-header
+      h1.historial-title Historial de Codificaciones
+    main.historial-main
+      each entry in historial
+        .historial-card
+          .historial-input-code
+            h2.historial-subtitle Código de entrada
+            pre.historial-pre= entry.inputCode
+          .historial-output-code
+            h2.historial-subtitle Código obtenido
+            pre.historial-pre= entry.outputCode
+  script.
+    const historial = !{JSON.stringify(historial)};

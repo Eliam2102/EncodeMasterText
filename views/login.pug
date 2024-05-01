@@ -2,21 +2,21 @@ doctype html
 html
   head
     title Slide Navbar
-    link(rel="stylesheet", type="text/css", href="slide navbar style.css")
+    link(rel="stylesheet", type="text/css", href="slide-navbar-style.css")
     link(href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap", rel="stylesheet")
-  body
-    .main
-      input#chk(type="checkbox", aria-hidden="true")
-      .signup
-        form
-          label(for="chk", aria-hidden="true") Sign up
-          input(type="text", name="txt", placeholder="User name", required="")
-          input(type="email", name="email", placeholder="Email", required="")
-          input(type="password", name="pswd", placeholder="Password", required="")
-          button(type="submit") Sign up
-      .login
-        form
-          label(for="chk", aria-hidden="true") Login
-          input(type="email", name="email", placeholder="Email", required="")
-          input(type="password", name="pswd", placeholder="Password", required="")
-          button(type="submit") Login
+  body.body-container-login
+    .main.main-container-login
+      input#chk-input(type="checkbox", aria-hidden="true")
+      .signup.signup-container
+        form.signup-form
+          label.signup-label(for="chk-input", aria-hidden="true") Sign up
+          input.signup-input(type="text", name="txt", placeholder="User name", required="")
+          input.signup-input(type="email", name="email", placeholder="Email", required="")
+          input.signup-input(type="password", name="pswd", placeholder="Password", required="")
+          button.signup-button(type="submit") Sign up
+      .login.login-container
+        form.login-form
+          label.login-label(for="chk-input", aria-hidden="true") Login
+          input.login-input(type="email", name="email", placeholder="Email", required="")
+          input.login-input(type="password", name="pswd", placeholder="Password", required="")
+          button.login-button(type="submit") Login
