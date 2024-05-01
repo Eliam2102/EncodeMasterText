@@ -1,90 +1,79 @@
-.body-container-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  font-family: Arial, sans-serif;
-  background-color: rgba(242, 242, 242, 0.9);
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+body {
+  font-family: "Poppins", sans-serif;
 }
 
-.container-layout {
-  max-width: 1050px;
-  width: 90%;
-  margin: auto;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 9999;
-}
-
-.navbar-nav .menu-items-nav {
-  padding-top: 120px;
-  box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
-  height: 100vh;
-  width: 100%;
-  transform: translate(-100%);
-  display: flex;
-  flex-direction: column;
-  margin-left: -40px;
-  padding-left: 50px;
-  transition: transform 0.5s ease-in-out, backdrop-filter 0.5s ease-in-out;
-  text-align: center;
+.navbar-nav {
   position: relative;
-  z-index: 10000;
-  backdrop-filter: blur(5px);
+  z-index: 1;
+  background-color: rgba(242, 242, 242, 0.9);
+  padding: 20px;
+  box-shadow: 0 1px 4px rgba(146, 161, 176, 0.15);
 }
 
-.menu-items-nav li {
-  margin-bottom: 1.2rem;
-  font-size: 1.5rem;
-  font-weight: 500;
+.hamburger-lines-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 32px;
+  height: 26px;
+  cursor: pointer;
+}
+
+.line {
+  width: 100%;
+  height: 4px;
+  border-radius: 10px;
+  background-color: #0e2431;
 }
 
 .logo-nav {
   position: absolute;
   top: 5px;
-  right: 15px;
+  right: 5px;
   font-size: 1.2rem;
-  color: #0e2431;
+  color: #000;
 }
 
-.checkbox-nav:checked ~ .menu-items-nav {
-  transform: translate(0);
-}
-
-.checkbox-nav:checked ~ .container-layout {
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.checkbox-nav:checked ~ .hamburger-lines-nav .line1 {
-  transform: rotate(45deg);
-}
-
-.checkbox-nav:checked ~ .hamburger-lines-nav .line2 {
-  transform: scaleY(0);
-}
-
-.checkbox-nav:checked ~ .hamburger-lines-nav .line3 {
-  transform: rotate(-45deg);
-}
-
-.checkbox-nav:checked ~ .logo-nav {
+.menu-items-nav {
   display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0);
+  padding: 20px;
+  box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.menu-items-nav li {
+  margin-bottom: 1.2rem;
+  font-size: 4.5rem;
+  font-weight: 500;
+}
+
+#menu-toggle:checked ~ .navbar-nav .menu-items-nav {
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (max-width: 768px) {
-  .input-text, #output-text {
-    width: 100%;
+  .navbar-nav {
+    padding: 0;
+  }
+  .navbar-nav .navbar-container-nav {
+    padding: 10px 20px;
+    align-items: center;
+  }
+  .navbar-nav .hamburger-lines-nav {
+    margin-right: 10px;
+  }
+  .navbar-nav .menu-items-nav {
+    padding: 0;
+  }
+  .navbar-nav .menu-items-nav .menu-items-nav li {
+    margin-bottom: 1rem;
   }
 }
 .body-container {
@@ -124,7 +113,19 @@
   width: 100%;
 }
 
-.input-text, #output-text {
+.input-text {
+  width: 90%;
+  min-height: 200px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  position: relative;
+  margin-top: 150px;
+}
+
+#output-text {
   width: 90%;
   min-height: 200px;
   padding: 10px;
@@ -162,6 +163,11 @@
   font-size: 0.8em;
   color: #666;
   font-weight: bold;
+  text-align: right;
+}
+
+.input-container:first-child .counter-container {
+  bottom: -20px;
 }
 
 #copy-btn {
@@ -417,6 +423,124 @@
 
 #chk-input:checked ~ .signup-label {
   transform: scale(0.6);
+}
+
+.body-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-container, .output-container {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-text, #output-text {
+  width: 90%;
+  min-height: 250px;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  font-size: 1.2em;
+}
+
+.select, .button {
+  width: 90%;
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.2em;
+}
+
+.button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+.counter-container {
+  position: relative;
+  bottom: -15px;
+  font-size: 1em;
+  color: #666;
+  font-weight: bold;
+}
+
+#copy-btn {
+  margin-top: 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 15px 30px;
+  cursor: pointer;
+}
+
+#copy-btn:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 768px) {
+  .input-text, #output-text {
+    width: 90%;
+    min-height: 200px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    font-size: 1em;
+  }
+  .select, .button {
+    width: 90%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+  }
+  .button {
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  #copy-btn {
+    margin-top: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+}
+.historial-header {
   background-color: #333;
   color: #fff;
   padding: 20px;

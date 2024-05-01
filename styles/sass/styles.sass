@@ -1,82 +1,74 @@
-// Estilo del layout del menú deslizable
-.body-container-nav
-  position: fixed
-  top: 0
-  left: 0
-  right: 0
-  bottom: 0
-  font-family: Arial, sans-serif
-  background-color: rgba(242, 242, 242, 0.9)
-  margin: 0
-  padding: 0
-  display: flex
-  flex-direction: column
-  align-items: center
-  justify-content: center
-  z-index: 9999
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap")
 
-.container-layout
-  max-width: 1050px
-  width: 90%
-  margin: auto
-  position: fixed
-  top: 0
-  left: 0
-  right: 0
-  bottom: 0
-  z-index: 9999
+body
+  font-family: 'Poppins', sans-serif
 
-.navbar-nav .menu-items-nav 
-  padding-top: 120px
-  box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5)
-  height: 100vh
-  width: 100%
-  transform: translate(-100%)
-  display: flex
-  flex-direction: column
-  margin-left: -40px
-  padding-left: 50px
-  transition: transform 0.5s ease-in-out, backdrop-filter 0.5s ease-in-out
-  text-align: center
+// Estilos generales del menú desplegable
+.navbar-nav
   position: relative
-  z-index: 10000
-  backdrop-filter: blur(5px)
+  z-index: 1
+  background-color: rgba(242, 242, 242, 0.9)
+  padding: 20px 
+  box-shadow: 0 1px 4px rgba(146, 161, 176, 0.15) 
 
-.menu-items-nav li 
-  margin-bottom: 1.2rem
-  font-size: 1.5rem
-  font-weight: 500
+// Estilos del icono de hamburguesa
+.hamburger-lines-nav
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  width: 32px  
+  height: 26px   
+  cursor: pointer
 
-.logo-nav 
+.line
+  width: 100%
+  height: 4px 
+  border-radius: 10px
+  background-color: #0e2431 
+
+// Estilos del logotipo
+.logo-nav
   position: absolute
   top: 5px
-  right: 15px
+  right: 5px // Reducir el valor de right para moverlo más a la izquierda
   font-size: 1.2rem
-  color: #0e2431
+  color: #000
 
-.checkbox-nav:checked ~ .menu-items-nav 
-  transform: translate(0)
+// Estilos del menú desplegable
+.menu-items-nav
+  display: none  
+  position: absolute  
+  top: 100%  
+  left: 0
+  width: 100%
+  background-color: rgba(255, 255, 255, 0)
+  padding: 20px 
+  box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5)
+  backdrop-filter: blur(10px)
 
-.checkbox-nav:checked ~ .container-layout
-  background-color: rgba(0, 0, 0, 0.5)
+// Estilos de los elementos del menú desplegable
+.menu-items-nav li
+  margin-bottom: 1.2rem
+  font-size: 4.5rem
+  font-weight: 500
 
-.checkbox-nav:checked ~ .hamburger-lines-nav .line1 
-  transform: rotate(45deg)
+// Mostrar los elementos del menú principal cuando se activa el menú hamburguesa
+#menu-toggle:checked ~ .navbar-nav .menu-items-nav
+  display: flex  
+  flex-direction: column   
 
-.checkbox-nav:checked ~ .hamburger-lines-nav .line2 
-  transform: scaleY(0)
-
-.checkbox-nav:checked ~ .hamburger-lines-nav .line3 
-  transform: rotate(-45deg)
-
-.checkbox-nav:checked ~ .logo-nav 
-  display: none
-
-
-@media screen and (max-width: 768px) 
-  .input-text, #output-text 
-    width: 100% 
-
+@media screen and (max-width: 768px)
+  .navbar-nav
+    padding: 0 
+    .navbar-container-nav
+      padding: 10px 20px   
+      align-items: center  
+    .hamburger-lines-nav
+      margin-right: 10px  
+    .menu-items-nav
+      padding: 0  
+      .menu-items-nav li
+        margin-bottom: 1rem
 
 
 //estilos del index
@@ -105,6 +97,7 @@
   align-items: center
   padding: 20px
   width: 80%
+  
 
 .input-container, .output-container
   margin-bottom: 20px
@@ -113,7 +106,18 @@
   align-items: center
   width: 100%
 
-.input-text, #output-text
+.input-text
+  width: 90%
+  min-height: 200px
+  padding: 10px
+  margin-bottom: 10px
+  border: 1px solid #ccc
+  border-radius: 5px
+  box-sizing: border-box
+  position: relative
+  margin-top: 150px
+
+#output-text
   width: 90%
   min-height: 200px
   padding: 10px
@@ -147,6 +151,10 @@
   font-size: 0.8em
   color: #666
   font-weight: bold
+  text-align: right
+
+.input-container:first-child .counter-container
+  bottom: -20px
 
 #copy-btn
   margin-top: 10px
@@ -370,8 +378,116 @@
   transform: scale(.6)
 
 
+// Estilos del index
+.body-container
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 100vh
+  background-color: #f2f2f2
+  margin: 0
+  padding: 0
+  font-family: Arial, sans-serif
+
+.main-container
+  display: flex
+  flex-direction: column
+  align-items: center
+
+.input-container, .output-container
+  margin-bottom: 30px // Aumenta el espacio entre los contenedores
+  display: flex
+  flex-direction: column
+  align-items: center
+
+.input-text, #output-text
+  width: 90%  
+  min-height: 250px // Aumenta la altura del área de texto
+  padding: 15px // Aumenta el espacio interno
+  margin-bottom: 20px // Aumenta el espacio inferior
+  border: 2px solid #ccc // Aumenta el grosor del borde
+  border-radius: 10px // Aumenta el radio de borde
+  box-sizing: border-box
+  overflow-y: auto 
+  font-size: 1.2em // Aumenta el tamaño de la fuente
+
+.select, .button
+  width: 90%
+  margin-bottom: 20px // Aumenta el espacio inferior
+  padding: 15px // Aumenta el espacio interno
+  border: 2px solid #ccc // Aumenta el grosor del borde
+  border-radius: 10px // Aumenta el radio de borde
+  cursor: pointer
+  font-size: 1.2em // Aumenta el tamaño de la fuente
+
+.button
+  background-color: #333
+  color: #fff
+  border: none
+  border-radius: 10px // Aumenta el radio de borde
+  cursor: pointer
+
+.button:hover
+  background-color: #555
+
+.counter-container
+  position: relative
+  bottom: -15px
+  font-size: 1em // Aumenta el tamaño de la fuente
+  color: #666
+  font-weight: bold
+
+#copy-btn
+  margin-top: 20px // Aumenta el espacio superior
+  background-color: #333
+  color: #fff
+  border: none
+  border-radius: 10px // Aumenta el radio de borde
+  padding: 15px 30px // Aumenta el espacio interno
+  cursor: pointer
+
+#copy-btn:hover
+  background-color: #555
+
+// Media query para dispositivos móviles
+@media screen and (max-width: 768px)
+  .input-text, #output-text
+    width: 90%
+    min-height: 200px
+    padding: 10px
+    margin-bottom: 10px
+    border: 1px solid #ccc
+    border-radius: 5px
+    box-sizing: border-box
+    overflow-y: auto 
+    font-size: 1em // Tamaño de fuente original
+
+  .select, .button
+    width: 90%
+    margin-bottom: 10px
+    padding: 10px
+    border: 1px solid #ccc
+    border-radius: 5px
+    cursor: pointer
+    font-size: 1em // Tamaño de fuente original
+
+  .button
+    border-radius: 5px
+    cursor: pointer
+
+  #copy-btn
+    margin-top: 10px
+    background-color: #333
+    color: #fff
+    border: none
+    border-radius: 5px
+    padding: 10px 20px
+    cursor: pointer
+
+
+
   //Hisotrial de conversiones
-    .historial-header
+.historial-header
   background-color: #333
   color: #fff
   padding: 20px

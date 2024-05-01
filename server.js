@@ -15,7 +15,7 @@ app.set('views', path.join(__dirname, 'views'));
 //Manejo de todas las solicitudes para las ruta principal o subrutas
 app.use('/', router);
 
-//Puerto en el cual se escucha el servidor
+//Puerto a la escucha del servidor
 const port = 3000;
 app.listen(port, () => {
     console.log(`Servidor iniciado en http://localhost:${port}`);
