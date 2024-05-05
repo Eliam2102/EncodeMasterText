@@ -1,22 +1,24 @@
 doctype html
 html
   head
-    title Slide Navbar
+    title EncodeMasterText
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(rel="stylesheet", type="text/css", href="css/styles.css")
     link(href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap", rel="stylesheet")
-  body.body-container-login
-    .main.main-container-login
-      input#chk-input(type="checkbox", aria-hidden="true")
-      .signup.signup-container
-        form.signup-form
-          label.signup-label(for="chk-input", aria-hidden="true") Sign up
-          input.signup-input(type="text", name="txt", placeholder="User name", required="")
-          input.signup-input(type="email", name="email", placeholder="Email", required="")
-          input.signup-input(type="password", name="pswd", placeholder="Password", required="")
-          button.signup-button(type="submit") Sign up
-      .login.login-container
-        form.login-form
-          label.login-label(for="chk-input", aria-hidden="true") Login
-          input.login-input(type="email", name="email", placeholder="Email", required="")
-          input.login-input(type="password", name="pswd", placeholder="Password", required="")
-          button.login-button(type="submit") Login
+  body.signup-login
+    .main-login
+      input#chk(type="checkbox", aria-hidden="true")
+      .signup
+        form
+          label(for="chk", aria-hidden="true" class="label-signup") Sign up
+          input(type="text", name="txt", placeholder="User name", required="")
+          input(type="email", name="email", placeholder="Email", required="")
+          input(type="password", name="pswd", placeholder="Password", required="")
+          button Sign up
+      .login
+        form
+          label(for="chk", aria-hidden="true" class = "label-login") Login
+          input(type="email", name="email", placeholder="Email", required="")
+          input(type="password", name="pswd", placeholder="Password", required="")
+          button Login

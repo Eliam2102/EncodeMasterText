@@ -1,211 +1,51 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap")
+// Estilos generales
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap")
 
-body
-  font-family: 'Poppins', sans-serif
-
-// Estilos generales del menú desplegable
-.navbar-nav
-  position: relative
-  z-index: 1
-  background-color: rgba(242, 242, 242, 0.9)
-  padding: 20px 
-  box-shadow: 0 1px 4px rgba(146, 161, 176, 0.15) 
-
-// Estilos del icono de hamburguesa
-.hamburger-lines-nav
-  display: flex
-  flex-direction: column
-  justify-content: space-between
-  width: 32px  
-  height: 26px   
-  cursor: pointer
-
-.line
-  width: 100%
-  height: 4px 
-  border-radius: 10px
-  background-color: #0e2431 
-
-// Estilos del logotipo
-.logo-nav
-  position: absolute
-  top: 5px
-  right: 5px // Reducir el valor de right para moverlo más a la izquierda
-  font-size: 1.2rem
-  color: #000
-
-// Estilos del menú desplegable
-.menu-items-nav
-  display: none  
-  position: absolute  
-  top: 100%  
-  left: 0
-  width: 100%
-  background-color: rgba(255, 255, 255, 0)
-  padding: 20px 
-  box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5)
-  backdrop-filter: blur(10px)
-
-// Estilos de los elementos del menú desplegable
-.menu-items-nav li
-  margin-bottom: 1.2rem
-  font-size: 4.5rem
-  font-weight: 500
-
-// Mostrar los elementos del menú principal cuando se activa el menú hamburguesa
-#menu-toggle:checked ~ .navbar-nav .menu-items-nav
-  display: flex  
-  flex-direction: column   
-
-@media screen and (max-width: 768px)
-  .navbar-nav
-    padding: 0 
-    .navbar-container-nav
-      padding: 10px 20px   
-      align-items: center  
-    .hamburger-lines-nav
-      margin-right: 10px  
-    .menu-items-nav
-      padding: 0  
-      .menu-items-nav li
-        margin-bottom: 1rem
-
-
-//estilos del index
-.body-container
-  position: relative
-  font-family: Arial, sans-serif
-  background-color: #f2f2f2
+*
   margin: 0
   padding: 0
-  display: flex
-  flex-direction: column
-  align-items: center
-  justify-content: center
-  height: 100vh
-
-.header-container
-  background-color: #333
-  color: #fff
-  padding: 20px
-  text-align: center
-
-.main-container
-  position: relative
-  display: flex
-  flex-direction: column
-  align-items: center
-  padding: 20px
-  width: 80%
-  
-
-.input-container, .output-container
-  margin-bottom: 20px
-  display: flex
-  flex-direction: column
-  align-items: center
-  width: 100%
-
-.input-text
-  width: 90%
-  min-height: 200px
-  padding: 10px
-  margin-bottom: 10px
-  border: 1px solid #ccc
-  border-radius: 5px
   box-sizing: border-box
-  position: relative
-  margin-top: 150px
 
-#output-text
-  width: 90%
-  min-height: 200px
-  padding: 10px
-  margin-bottom: 10px
-  border: 1px solid #ccc
-  border-radius: 5px
-  box-sizing: border-box
-  position: relative
+body.layout-enc
+  font-family: "Poppins", sans-serif
 
-.select, .button
-  margin-bottom: 10px
-  padding: 10px
-  border: 1px solid #ccc
-  border-radius: 5px
-  cursor: pointer
-
-.button
-  background-color: #333
-  color: #fff
-  border: none
-  border-radius: 5px
-  cursor: pointer
-
-.button:hover
-  background-color: #555
-
-.counter-container
-  position: absolute
-  bottom: 5px 
-  right: 5px
-  font-size: 0.8em
-  color: #666
-  font-weight: bold
-  text-align: right
-
-.input-container:first-child .counter-container
-  bottom: -20px
-
-#copy-btn
-  margin-top: 10px
-  background-color: #333
-  color: #fff
-  border: none
-  border-radius: 5px
-  padding: 10px 20px
-  cursor: pointer
-
-#copy-btn:hover
-  background-color: #555
-
-
-@media screen and (max-width: 768px) 
-  .input-text, #output-text 
-    width: 100% 
-
-.container-layout
+.container 
   max-width: 1050px
-  width: 90%
+  width: 100%
   margin: auto
 
-.navbar-nav
-  display: block
+.navbar 
   width: 100%
   box-shadow: 0 1px 4px rgb(146 161 176 / 15%)
 
-.nav-container-nav
+.nav-container 
   display: flex
   justify-content: space-between
   align-items: center
   height: 62px
 
-.menu-items-nav
+.navbar .menu-items 
   display: flex
 
-.nav-container-nav li 
+.navbar .nav-container li 
   list-style: none
 
-.nav-container-nav a 
+.navbar .nav-container a 
   text-decoration: none
-  color: #0e2431
+  color: #000
   font-weight: 500
   font-size: 1.2rem
   padding: 0.7rem
 
-.nav-container-nav a:hover
+.navbar .nav-container a:hover
   font-weight: bolder
 
-.checkbox-nav 
+.nav-container 
+  display: block
+  position: relative
+  height: 60px
+
+.nav-container .checkbox 
   position: absolute
   display: block
   height: 32px
@@ -216,7 +56,7 @@ body
   opacity: 0
   cursor: pointer
 
-.hamburger-lines-nav 
+.nav-container .hamburger-lines 
   display: block
   height: 26px
   width: 32px
@@ -228,67 +68,162 @@ body
   flex-direction: column
   justify-content: space-between
 
-.line 
+.nav-container .hamburger-lines .line 
   display: block
   height: 4px
   width: 100%
   border-radius: 10px
-  background: #0e2431
+  background: #000
 
-.line1 
+.nav-container .hamburger-lines .line1 
   transform-origin: 0% 0%
   transition: transform 0.4s ease-in-out
 
-.line2 
+.nav-container .hamburger-lines .line2 
   transition: transform 0.2s ease-in-out
 
-.line3 
+.nav-container .hamburger-lines .line3 
   transform-origin: 0% 100%
   transition: transform 0.4s ease-in-out
 
-.menu-items-nav 
+.navbar .menu-items
   padding-top: 120px
-  box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5)
-  height: 100vh
-  width: 100%
+  height: 130vh
+  width: 90vw
   transform: translate(-150%)
   display: flex
   flex-direction: column
   margin-left: -40px
-  padding-left: 50px
+  padding-left: 0px
   transition: transform 0.5s ease-in-out
   text-align: center
+  backdrop-filter: blur(4px)
+  background-color: rgba(255, 255, 255, 0.5)
+  position: relative
+  z-index: 1
 
-.menu-items-nav li 
+@media screen and (max-width: 768px)
+  .navbar .menu-items
+    width: 95vw
+
+
+.navbar .menu-items li
   margin-bottom: 1.2rem
   font-size: 1.5rem
   font-weight: 500
+  margin-left: -15px
 
-.logo-nav 
+.logo
   position: absolute
   top: 5px
   right: 15px
   font-size: 1.2rem
-  color: #0e2431
+  color: #000
+  z-index: 2
 
-.checkbox-nav:checked ~ .menu-items-nav 
+
+.nav-container input[type="checkbox"]:checked ~ .menu-items 
   transform: translateX(0)
 
-.checkbox-nav:checked ~ .line1 
+.nav-container input[type="checkbox"]:checked ~ .hamburger-lines .line1 
   transform: rotate(45deg)
 
-.checkbox-nav:checked ~ .line2 
+.nav-container input[type="checkbox"]:checked ~ .hamburger-lines .line2 
   transform: scaleY(0)
 
-.checkbox-nav:checked ~ .line3 
+.nav-container input[type="checkbox"]:checked ~ .hamburger-lines .line3 
   transform: rotate(-45deg)
 
-.checkbox-nav:checked ~ .logo-nav 
+.nav-container input[type="checkbox"]:checked ~ .logo 
   display: none
 
+
+
+
+//Estilos index
+body 
+  font-family: "Poppins", sans-serif
+
+// Estilos para el cuerpo y el contenedor principal
+.body-container 
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 100vh
+
+.main-container 
+  display: flex
+  flex-direction: column
+  align-items: center
+  margin-top: 30px
+
+// Estilos para los contenedores de entrada y salida
+.input-container, .output-container 
+  display: flex
+  flex-direction: column
+  align-items: center
+  width: 90%
+  max-width: 600px
   
-// Estilos de login
-.body-container-login
+
+// Estilos para el primer input con scrollbar y el contenedor del contador
+.input-text, #output-text 
+  width: 100%
+  min-height: 150px
+  padding: 10px
+  margin-bottom: 10px
+  border: 1px solid #000
+  border-radius: 5px
+  overflow-y: auto
+
+.counter-container 
+  align-self: flex-end
+  margin-bottom: 10px
+
+// Estilos para el selector de cifrado
+#encryption-type 
+  width: 100%
+  margin-bottom: 10px
+
+// Estilos para el botón de cifrado y copiar
+.button 
+  margin-bottom: 10px
+  padding: 10px 20px
+  border: none
+  border-radius: 5px
+  cursor: pointer
+
+#encrypt-btn 
+  background-color: #6FCF97 // Verde pastel
+  color: #fff
+  align-self: flex-end
+  margin-left: auto
+  margin-bottom: 10px
+#copy-btn 
+  background-color: #2C89F0
+  color: #fff
+
+// Estilos para el texto cifrado
+#output-text 
+  background-color: #f2f2f2
+  color: #333
+
+// Estilos para el botón cifrar y el número de vueltas
+#num-of-turns
+  padding: 6px
+  width: 140px
+  font-size: 16px
+  text-align: center
+  margin-left: 10px
+
+// Media query para dispositivos pequeños
+@media screen and (max-width: 768px)
+  .input-container, .output-container
+    width: 100%
+
+
+//Estilos login
+body.signup-login
   margin: 0
   padding: 0
   display: flex
@@ -296,226 +231,122 @@ body
   align-items: center
   min-height: 100vh
   font-family: 'Jost', sans-serif
-  background: linear-gradient(to bottom, #ffffff, #000000)
+  background: linear-gradient(to bottom, #222, #333, #444)
 
-.main-container-login
+.main-login
   width: 350px
   height: 500px
-  background: #333333
+  background: red
   overflow: hidden
   background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover
   border-radius: 10px
   box-shadow: 5px 20px 50px #000
 
-#chk-input
+
+@media screen and (max-width: 768px)
+  .main-login
+    width: 100%
+    max-width: none
+
+#chk
   display: none
 
-.signup-container
+.signup
   position: relative
   width: 100%
   height: 100%
 
-.signup-label
-  color: #ffffff
-  font-size: 2.3em
-  justify-content: center
-  display: flex
-  margin: 60px
-  font-weight: bold
-  cursor: pointer
-  transition: .5s ease-in-out
-
-.signup-input
-  width: 60%
-  height: 20px
-  background: #eeeeee
-  justify-content: center
-  display: flex
-  margin: 20px auto
-  padding: 10px
-  border: none
-  outline: none
-  border-radius: 5px
-
-.signup-button
-  width: 60%
-  height: 40px
-  margin: 10px auto
-  justify-content: center
-  display: block
-  color: #000000
-  background: #ffffff
-  font-size: 1em
-  font-weight: bold
-  margin-top: 20px
-  outline: none
-  border: none
-  border-radius: 5px
-  transition: .2s ease-in
-  cursor: pointer
-
-.signup-button:hover
-  background: #cccccc
-
-.login-container
-  height: 460px
-  background: #cccccc
-  border-radius: 60% / 10%
-  transform: translateY(-180px)
-  transition: .8s ease-in-out
-
-.login-label
-  color: #000000
-  transform: scale(.6)
-
-#chk-input:checked ~ .login-container
-  transform: translateY(-500px)
-
-#chk-input:checked ~ .login-label
-  transform: scale(1)
-
-#chk-input:checked ~ .signup-label
-  transform: scale(.6)
-
-
-// Estilos del index
-.body-container
-  display: flex
-  justify-content: center
-  align-items: center
-  height: 100vh
-  background-color: #f2f2f2
-  margin: 0
-  padding: 0
-  font-family: Arial, sans-serif
-
-.main-container
-  display: flex
-  flex-direction: column
-  align-items: center
-
-.input-container, .output-container
-  margin-bottom: 30px // Aumenta el espacio entre los contenedores
-  display: flex
-  flex-direction: column
-  align-items: center
-
-.input-text, #output-text
-  width: 90%  
-  min-height: 250px // Aumenta la altura del área de texto
-  padding: 15px // Aumenta el espacio interno
-  margin-bottom: 20px // Aumenta el espacio inferior
-  border: 2px solid #ccc // Aumenta el grosor del borde
-  border-radius: 10px // Aumenta el radio de borde
-  box-sizing: border-box
-  overflow-y: auto 
-  font-size: 1.2em // Aumenta el tamaño de la fuente
-
-.select, .button
-  width: 90%
-  margin-bottom: 20px // Aumenta el espacio inferior
-  padding: 15px // Aumenta el espacio interno
-  border: 2px solid #ccc // Aumenta el grosor del borde
-  border-radius: 10px // Aumenta el radio de borde
-  cursor: pointer
-  font-size: 1.2em // Aumenta el tamaño de la fuente
-
-.button
-  background-color: #333
-  color: #fff
-  border: none
-  border-radius: 10px // Aumenta el radio de borde
-  cursor: pointer
-
-.button:hover
-  background-color: #555
-
-.counter-container
-  position: relative
-  bottom: -15px
-  font-size: 1em // Aumenta el tamaño de la fuente
-  color: #666
-  font-weight: bold
-
-#copy-btn
-  margin-top: 20px // Aumenta el espacio superior
-  background-color: #333
-  color: #fff
-  border: none
-  border-radius: 10px // Aumenta el radio de borde
-  padding: 15px 30px // Aumenta el espacio interno
-  cursor: pointer
-
-#copy-btn:hover
-  background-color: #555
-
-// Media query para dispositivos móviles
-@media screen and (max-width: 768px)
-  .input-text, #output-text
-    width: 90%
-    min-height: 200px
-    padding: 10px
-    margin-bottom: 10px
-    border: 1px solid #ccc
-    border-radius: 5px
-    box-sizing: border-box
-    overflow-y: auto 
-    font-size: 1em // Tamaño de fuente original
-
-  .select, .button
-    width: 90%
-    margin-bottom: 10px
-    padding: 10px
-    border: 1px solid #ccc
-    border-radius: 5px
-    cursor: pointer
-    font-size: 1em // Tamaño de fuente original
-
-  .button
-    border-radius: 5px
-    cursor: pointer
-
-  #copy-btn
-    margin-top: 10px
-    background-color: #333
+  label
     color: #fff
+    font-size: 2.3em
+    justify-content: center
+    display: flex
+    margin: 60px
+    font-weight: bold
+    cursor: pointer
+    transition: .5s ease-in-out
+
+  input
+    width: 60%
+    height: 20px
+    background: #e0dede
+    justify-content: center
+    display: flex
+    margin: 20px auto
+    padding: 10px
+    border: none
+    outline: none
+    border-radius: 5px
+
+  button
+    width: 60%
+    height: 40px
+    margin: 10px auto
+    justify-content: center
+    display: block
+    color: #fff
+    background: #333
+    font-size: 1em
+    font-weight: bold
+    margin-top: 20px
+    outline: none
     border: none
     border-radius: 5px
-    padding: 10px 20px
+    transition: .2s ease-in
     cursor: pointer
 
+  button:hover
+    background: #444
+.login
+  height: 460px
+  background: #eee
+  border-radius: 60% / 10%
+  transform: translateY(-180px)
+  transition: transform .8s ease-in-out
+
+  label
+    color: #000
+    font-size: 2.3em
+    justify-content: center
+    display: flex
+    margin: 60px
+    font-weight: bold
+    cursor: pointer
+    transform: scale(.6)
+  
+  button
+    width: 60%
+    height: 40px
+    margin: 10px auto
+    justify-content: center
+    display: block
+    color: #fff
+    background: #333
+    font-size: 1em
+    font-weight: bold
+    margin-top: 20px
+    outline: none
+    border: none
+    border-radius: 5px
+    transition: .2s ease-in
+    cursor: pointer
+
+  input
+    width: 60%
+    height: 20px
+    background: #e0dede
+    justify-content: center
+    display: flex
+    margin: 20px auto
+    padding: 10px
+    border: none
+    outline: none
+    border-radius: 5px
+
+  #chk:checked ~ &
+    transform: translateY(-500px)
+
+  #chk:checked ~ label
+    transform: scale(1)
 
 
-  //Hisotrial de conversiones
-.historial-header
-  background-color: #333
-  color: #fff
-  padding: 20px
-  text-align: center
-
-.historial-main
-  display: flex
-  flex-wrap: wrap
-  justify-content: center
-  padding: 20px
-
-.historial-card
-  background-color: #f2f2f2
-  border-radius: 10px
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)
-  margin: 20px
-  padding: 20px
-  width: 400px
-
-.historial-subtitle
-  color: #333
-  font-size: 1.2rem
-  margin-bottom: 10px
-
-.historial-pre
-  background-color: #fff
-  border: 1px solid #ccc
-  border-radius: 5px
-  padding: 10px
-  white-space: pre-wrap
-  word-wrap: break-word
