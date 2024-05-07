@@ -1,0 +1,33 @@
+doctype html
+html(lang="es")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=0.98")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title Regístrate
+        // Google Fonts
+        link(href="https://fonts.googleapis.com/css?family=Lato&display=swap", rel="stylesheet")
+        // Estilos CSS
+        link(rel="stylesheet", href="css/styles.css")
+        // Favicon
+        link(rel="shortcut icon", href="imagen ", type="image/x-icon")
+    body.sigin
+        main
+        article
+            section
+            form#registro(class = "sigin-form",action="/sigin", method="POST")
+                h1 Regístrate
+                input(class = "sigin-inp", type="text", name="nombre", placeholder="Nombre")
+                br
+                input(class = "sigin-inp", type="email", name="email", placeholder="Correo electrónico")
+                br
+                input(class = "sigin-inp", type="password", name="firstpassword", placeholder="Contraseña")
+                br
+                input(class = "sigin-inp",  type="password", name="passwordConfirm", placeholder="Repite la Contraseña")
+                br
+                button(type="submit") Entrar
+                button(type="reset") Limpiar
+
+                p ¿Ya tienes cuenta?
+                p
+                    a(href="index.html") Inicia Sesión

@@ -5,3 +5,6 @@ function encryptBase64(inputString, rounds) {
     }
     return encryptedData;
 }
+
+
+modules.exports = {encryptBase64};

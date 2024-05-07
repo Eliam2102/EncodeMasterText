@@ -97,8 +97,8 @@ body.layout-enc
   padding-left: 0px
   transition: transform 0.5s ease-in-out
   text-align: center
-  backdrop-filter: blur(4px)
-  background-color: rgba(255, 255, 255, 0.5)
+  backdrop-filter: blur(2px)
+  background-color: rgba(255, 255, 255, 0.2)
   position: relative
   z-index: 1
 
@@ -113,7 +113,7 @@ body.layout-enc
   font-weight: 500
   margin-left: -15px
 
-.logo
+.logo-encode
   position: absolute
   top: 5px
   right: 15px
@@ -134,8 +134,9 @@ body.layout-enc
 .nav-container input[type="checkbox"]:checked ~ .hamburger-lines .line3 
   transform: rotate(-45deg)
 
-.nav-container input[type="checkbox"]:checked ~ .logo 
+.nav-container input[type="checkbox"]:checked ~ .logo-encode
   display: none
+
 
 
 
@@ -194,14 +195,24 @@ body
   cursor: pointer
 
 #encrypt-btn 
-  background-color: #6FCF97 // Verde pastel
+  background-color: #12720f // Verde pastel
   color: #fff
   align-self: flex-end
   margin-left: auto
   margin-bottom: 10px
+  transition: all 0.3s ease // Agregamos una transición para suavizar el cambio
+
 #copy-btn 
-  background-color: #2C89F0
+  background-color: #0462ce
   color: #fff
+  transition: all 0.3s ease // Agregamos una transición para suavizar el cambio
+
+#encrypt-btn:hover,
+#copy-btn:hover
+  filter: brightness(1.2)
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) // Ajusta los valores según sea necesario
+
+  
 
 // Estilos para el texto cifrado
 #output-text 
@@ -223,7 +234,6 @@ body
 
 
 //Estilos login
-/*variables*/
 $loginfonts: 13px/20px "Open Sans", Tahoma, Verdana, sans-serif
 
 //colors
@@ -234,9 +244,6 @@ $buttoncolor: #16a085
 $buttonhover: rgba(26, 188, 156, 1)
 $iconhover: #27ae60
 
-/*general style*/
-
-/*google font*/
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,300,400,700")
 
 body.login
@@ -244,7 +251,6 @@ body.login
   color: $fontscolor
   background: $loginbg
 
-/*Login form style*/
 
 /* === Logo === */
 .logo
@@ -277,9 +283,12 @@ body.login
 
 /* === Login styles === */
 .login
-  position: relative
-  margin: 20px auto
-  max-width: 400px
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  width: 90%
+  max-width: 400px 
   height: auto
   background: white
   border-radius: 3px
@@ -318,7 +327,7 @@ body.login
       float: left
 
       label
-        color: #a7a599
+        color: #ffff
         font-size: 12px
         cursor: pointer
 
@@ -336,14 +345,13 @@ body.login
         &:hover
           color: #f2672e
 
-/*input style*/
 /* === Input Form === */
 ::-webkit-input-placeholder
-  color: #ded9cf
+  color: #272209
   font-family: "Open Sans"
 
 :-moz-placeholder
-  color: #ded9cf !important
+  color: #272209 !important
   font-family: "Open Sans"
 
 .form input[type="text"],
@@ -353,8 +361,8 @@ input[type="password"]
   font-weight: 400
   padding: 10px 15px 10px 55px
   position: relative
-  width: calc(100% - 40px)
-  max-width: 300px
+  width: calc(100% - 40px) /* Utiliza el 100% del ancho menos el padding */
+  max-width: 300px /* Limita el ancho máximo de los campos de entrada */
   height: 40px
   color: #676056
   border: none
@@ -380,8 +388,8 @@ input[type="password"]
 
 .form input[type="submit"]
   margin-top: 15px
-  width: calc(100% - 40px)
-  max-width: 300px
+  width: calc(100% - 40px) /* Utiliza el 100% del ancho menos el padding */
+  max-width: 300px /* Limita el ancho máximo del botón de envío */
   text-align: center
   font-size: 14px
   font-family: "Open Sans", sans-serif
@@ -407,7 +415,6 @@ input[type="submit"]:focus
   -webkit-animation: shadowFade 0.4s
   -moz-animation: shadowFade 0.4s
 
-/*keyframes for input animation*/
 
 @keyframes shadowFade
   0%
@@ -444,3 +451,195 @@ input[type="submit"]:focus
 @-moz-keyframes shadowFade
   0%
     box-shadow: inset 0px 0px 0px 0px $buttonhover
+    color: #fff
+  100%
+    box-shadow: inset 0px 46px 0px 0px $buttonhover
+    color: #fff
+
+@-moz-keyframes shadowFadeOut
+  0%
+    box-shadow: inset 0px 44px 0px 0px $buttonhover
+    color: #fff
+  100%
+    box-shadow: inset 0px 0px 0px 0px $buttonhover
+    color: #fff
+
+/*continued styling for input */
+.form input[type="checkbox"]
+  display: none
+
+/* === Copyright === */
+.copyright
+  margin-top: 30px
+  text-align: center
+
+  p,
+  a
+    color: #828078
+    font-size: 12px
+    text-decoration: none
+    transition: color 0.3s ease-out
+
+    a:hover
+      color: #f2672e
+
+/* Media queries para hacer el diseño más responsive */
+/* Media queries para hacer el diseño más responsive */
+@media screen and (max-width: 600px)
+  .login
+    width: 90%
+    max-width: none
+    margin: 0 auto  // Centra el formulario
+
+  .form input[type="text"],
+  input[type="password"],
+  .form input[type="submit"]
+    width: calc(100% - 30px)
+    max-width: none
+    margin: 10px auto
+
+//Icons
+.fa
+  font-size: 18px
+  left: 0px
+  top: 0px
+  position: absolute
+  height: 44px
+  width: 44px
+  background: #ffff
+  text-align: center
+  line-height: 44px
+  transition: all 0.3s ease-out
+  pointer-events: none
+
+.fa.fa-user
+  color: #27ae60
+
+.fa.fa-lock
+  color: #27ae60
+
+
+//Estilos de sigin
+/* Variables */
+$font-family: 'Lato', sans-serif
+$body-bg-image: url('/img/bkg-hacer.png')
+$register-bg-color: #fff
+$form-bg-color: rgba(235, 235, 205, 0.7)
+$submit-button-bg-color: rgb(34, 139, 34)
+$submit-button-hover-bg-color: #57A639
+$reset-button-bg-color: #FFA420
+$reset-button-hover-bg-color: #FF7514
+$paragraph-color: rgba(26, 24, 24, 0.692)
+$link-color: rgba(7, 7, 248, 0.562)
+$link-hover-color: rgba(11, 11, 190, 0.562)
+$link-focus-color: rgba(3, 3, 85, 0.466)
+
+
+body.sigin
+  background-image: $body-bg-image
+  background-repeat: no-repeat
+  background-attachment: fixed
+  opacity: 0.99
+  background-size: cover
+
+article 
+  width: 100%
+  height: auto
+
+#register, form.sigin-form
+  width: 600px
+  height: 455px
+  margin: 0 auto
+  margin-top: 45px
+  background-color: $register-bg-color
+  padding: 5px
+  border-radius: 3px
+
+h1 
+  text-align: center
+  font-size: 2.1rem
+
+img 
+  width: 2rem
+  height: auto
+  margin: 5px 15px
+  cursor: pointer
+
+input.sigin-inp
+  padding: 15px 10px
+  margin: 5px 0px
+  width: 100%
+  color: #666
+  border-radius: 1px
+  border: 1px solid #ccc
+
+button[type="submit"] 
+  background-color: $submit-button-bg-color
+  padding: 8px 13px
+  margin: 10px 0px
+  color: white
+  border-radius: 3px
+  border: none
+  font-size: 1.2rem
+  cursor: pointer
+
+  &:hover 
+    background-color: $submit-button-hover-bg-color
+
+button[type="reset"] 
+  float: right
+  background-color: $reset-button-bg-color
+  padding: 8px 13px
+  margin: 10px 0px
+  color: white
+  border-radius: 3px
+  border: none
+  font-size: 1.2rem
+  cursor: pointer
+
+  &:hover 
+    background-color: $reset-button-hover-bg-color
+
+p 
+  text-align: center
+  font-size: 1.2rem
+  color: $paragraph-color
+
+a 
+  color: $link-color
+  cursor: pointer
+  font-size: 1.1rem
+  text-decoration: none
+
+  &:hover 
+    color: $link-hover-color
+
+  &:focus 
+    color: $link-focus-color
+
+  /* Media queries para pantallas más pequeñas */
+@media screen and (max-width: 600px)
+  #register, form.sigin-form
+    width: 90% /* Reduce el ancho del formulario */
+    margin-top: 20px /* Ajusta el margen superior */
+    padding: 10px /* Ajusta el relleno */
+    height: auto /* Cambia la altura a automática */
+    max-width: 90% /* Limita el ancho máximo del formulario */
+
+  h1 
+    font-size: 1.8rem /* Reduce el tamaño del título */
+
+  img 
+    width: 1.5rem /* Reduce el tamaño de la imagen */
+
+  input.sigin-inp 
+    padding: 10px 5px /* Reduce el relleno de los campos de entrada */
+
+  button[type="submit"], button[type="reset"]
+    padding: 6px 10px /* Reduce el relleno de los botones */
+
+  p 
+    font-size: 1rem /* Reduce el tamaño del texto de párrafo */
+
+  a 
+    font-size: 1rem /* Reduce el tamaño del texto de los enlaces */
