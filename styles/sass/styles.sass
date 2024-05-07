@@ -223,130 +223,224 @@ body
 
 
 //Estilos login
-body.signup-login
-  margin: 0
-  padding: 0
-  display: flex
-  justify-content: center
-  align-items: center
-  min-height: 100vh
-  font-family: 'Jost', sans-serif
-  background: linear-gradient(to bottom, #222, #333, #444)
+/*variables*/
+$loginfonts: 13px/20px "Open Sans", Tahoma, Verdana, sans-serif
 
-.main-login
-  width: 350px
-  height: 500px
-  background: red
-  overflow: hidden
-  background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover
-  border-radius: 10px
-  box-shadow: 5px 20px 50px #000
+//colors
+$fontscolor: #a7a599
+$loginbg: #31302b
+$headerbg: #1abc9c
+$buttoncolor: #16a085
+$buttonhover: rgba(26, 188, 156, 1)
+$iconhover: #27ae60
 
+/*general style*/
 
-@media screen and (max-width: 768px)
-  .main-login
-    width: 100%
-    max-width: none
+/*google font*/
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,300,400,700")
 
-#chk
-  display: none
+body.login
+  font: $loginfonts
+  color: $fontscolor
+  background: $loginbg
 
-.signup
-  position: relative
+/*Login form style*/
+
+/* === Logo === */
+.logo
+  background-position: center
+  height: 60px
+  width: 140px
+  margin: 20px auto 30px auto
+
+/* === Form === */
+.form
   width: 100%
-  height: 100%
 
-  label
-    color: #fff
-    font-size: 2.3em
-    justify-content: center
-    display: flex
-    margin: 60px
-    font-weight: bold
-    cursor: pointer
-    transition: .5s ease-in-out
+  .field
+    position: relative
+    margin: 0 20px
 
-  input
-    width: 60%
-    height: 20px
-    background: #e0dede
-    justify-content: center
-    display: flex
-    margin: 20px auto
-    padding: 10px
-    border: none
-    outline: none
-    border-radius: 5px
+    i
+      font-size: 18px
+      left: 0px
+      top: 0px
+      position: absolute
+      height: 44px
+      width: 44px
+      color: #f7f3eb
+      background: #676056
+      text-align: center
+      line-height: 44px
+      transition: all 0.3s ease-out
+      pointer-events: none
 
-  button
-    width: 60%
-    height: 40px
-    margin: 10px auto
-    justify-content: center
-    display: block
-    color: #fff
-    background: #333
-    font-size: 1em
-    font-weight: bold
-    margin-top: 20px
-    outline: none
-    border: none
-    border-radius: 5px
-    transition: .2s ease-in
-    cursor: pointer
-
-  button:hover
-    background: #444
+/* === Login styles === */
 .login
-  height: 460px
-  background: #eee
-  border-radius: 60% / 10%
-  transform: translateY(-180px)
-  transition: transform .8s ease-in-out
+  position: relative
+  margin: 20px auto
+  max-width: 400px
+  height: auto
+  background: white
+  border-radius: 3px
 
-  label
-    color: #000
-    font-size: 2.3em
-    justify-content: center
-    display: flex
-    margin: 60px
+  &:before
+    content: ""
+    position: absolute
+    top: -8px
+    right: -8px
+    bottom: -8px
+    left: -8px
+    z-index: -1
+    background: rgba(255, 255, 255, 0.1)
+    border-radius: 4px
+
+  h1
+    line-height: 55px
+    font-size: 24px
     font-weight: bold
-    cursor: pointer
-    transform: scale(.6)
-  
-  button
-    width: 60%
-    height: 40px
-    margin: 10px auto
-    justify-content: center
-    display: block
+    font-family: "Open Sans", sans-serif
+    text-transform: uppercase
     color: #fff
-    background: #333
-    font-size: 1em
-    font-weight: bold
-    margin-top: 20px
-    outline: none
-    border: none
-    border-radius: 5px
-    transition: .2s ease-in
-    cursor: pointer
+    text-align: center
+    background: $headerbg
+    border-top-left-radius: 3px
+    border-top-right-radius: 3px
 
-  input
-    width: 60%
-    height: 20px
-    background: #e0dede
-    justify-content: center
-    display: flex
-    margin: 20px auto
-    padding: 10px
-    border: none
-    outline: none
-    border-radius: 5px
+  .submit
+    text-align: center
 
-  #chk:checked ~ &
-    transform: translateY(-500px)
+  p
+    &:first-child
+      margin-top: 30px
 
-  #chk:checked ~ label
-    transform: scale(1)
+    .remember
+      float: left
 
+      label
+        color: #a7a599
+        font-size: 12px
+        cursor: pointer
 
+    .forgot
+      float: right
+      margin-right: 20px
+
+      a
+        color: #a7a599
+        font-size: 12px
+        text-decoration: none
+        font-style: italic
+        transition: all 0.3s ease-out
+
+        &:hover
+          color: #f2672e
+
+/*input style*/
+/* === Input Form === */
+::-webkit-input-placeholder
+  color: #ded9cf
+  font-family: "Open Sans"
+
+:-moz-placeholder
+  color: #ded9cf !important
+  font-family: "Open Sans"
+
+.form input[type="text"],
+input[type="password"]
+  font-family: "Open Sans", Calibri, Arial, sans-serif
+  font-size: 14px
+  font-weight: 400
+  padding: 10px 15px 10px 55px
+  position: relative
+  width: calc(100% - 40px)
+  max-width: 300px
+  height: 40px
+  color: #676056
+  border: none
+  background: #f7f3eb
+  color: #777
+  transition: color 0.3s ease-out
+
+.form input[type="text"]
+  margin-bottom: 15px
+
+.form input[type="text"]:hover ~ i,
+.form input[type="password"]:hover ~ i
+  color: $iconhover
+
+.form input[type="text"]:focus ~ i,
+.form input[type="password"]:focus ~ i
+  color: $iconhover
+
+.form input[type="text"]:focus,
+.form input[type="password"]:focus,
+.form button[type="submit"]:focus
+  outline: none
+
+.form input[type="submit"]
+  margin-top: 15px
+  width: calc(100% - 40px)
+  max-width: 300px
+  text-align: center
+  font-size: 14px
+  font-family: "Open Sans", sans-serif
+  font-weight: bold
+  padding: 12px 0
+  letter-spacing: 0
+  box-shadow: inset 0px 0px 0px 0px $buttonhover
+  color: #fff
+  background-color: $buttoncolor
+  text-shadow: none
+  text-transform: uppercase
+  border: none
+  cursor: pointer
+  position: relative
+  margin-bottom: 20px
+  -webkit-animation: shadowFadeOut 0.4s
+  -moz-animation: shadowFadeOut 0.4s
+
+.form input[type="submit"]:hover,
+input[type="submit"]:focus
+  color: #fff
+  box-shadow: inset 0px 46px 0px 0px $buttonhover
+  -webkit-animation: shadowFade 0.4s
+  -moz-animation: shadowFade 0.4s
+
+/*keyframes for input animation*/
+
+@keyframes shadowFade
+  0%
+    box-shadow: inset 0px 0px 0px 0px $buttonhover
+    color: #fff
+  100%
+    box-shadow: inset 0px 46px 0px 0px $buttonhover
+    color: #fff
+
+@keyframes shadowFadeOut
+  0%
+    box-shadow: inset 0px 46px 0px 0px $buttonhover
+    color: #fff
+  100%
+    box-shadow: inset 0px 0px 0px 0px $buttonhover
+    color: #fff
+
+@-webkit-keyframes shadowFade
+  0%
+    box-shadow: inset 0px 0px 0px 0px $buttonhover
+    color: #fff
+  100%
+    box-shadow: inset 0px 46px 0px 0px $buttonhover
+    color: #fff
+
+@-webkit-keyframes shadowFadeOut
+  0%
+    box-shadow: inset 0px 46px 0px 0px $buttonhover
+    color: #fff
+  100%
+    box-shadow: inset 0px 0px 0px 0px $buttonhover
+    color: #fff
+
+@-moz-keyframes shadowFade
+  0%
+    box-shadow: inset 0px 0px 0px 0px $buttonhover
