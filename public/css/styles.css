@@ -119,9 +119,16 @@ body.layout-enc {
   z-index: 1;
 }
 
-@media screen and (max-width: 768px) {
-  .navbar .menu-items {
-    width: 95vw;
+@media screen and (max-width: 600px) {
+  .contenedor {
+    border: 5px solid #007bff;
+    padding: 10px;
+  }
+  .titulo {
+    font-size: 20px;
+  }
+  .texto {
+    font-size: 16px;
   }
 }
 .navbar .menu-items li {
@@ -516,12 +523,12 @@ input[type=submit]:focus {
 }
 
 /* Media queries para hacer el diseño más responsive */
-/* Media queries para hacer el diseño más responsive */
 @media screen and (max-width: 600px) {
   .login {
     width: 90%;
     max-width: none;
-    margin: 0 auto;
+    margin: 10% auto;
+    heigth: 120%;
   }
   .form input[type=text],
   input[type=password],
@@ -555,7 +562,7 @@ input[type=submit]:focus {
 
 /* Variables */
 body.sigin {
-  background-image: url("/img/bkg-hacer.png");
+  background-color: #31302B;
   background-repeat: no-repeat;
   background-attachment: fixed;
   opacity: 0.99;
@@ -568,18 +575,21 @@ article {
 }
 
 #register, form.sigin-form {
-  width: 600px;
-  height: 455px;
+  width: 700px;
+  height: 500px;
   margin: 0 auto;
   margin-top: 45px;
-  background-color: #fff;
+  background-color: #464541;
   padding: 5px;
   border-radius: 3px;
+  margi-top: 20px;
 }
 
 h1 {
   text-align: center;
   font-size: 2.1rem;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
 }
 
 img {
@@ -596,10 +606,11 @@ input.sigin-inp {
   color: #666;
   border-radius: 1px;
   border: 1px solid #ccc;
+  border-radius: 20px;
 }
 
 button[type=submit] {
-  background-color: rgb(34, 139, 34);
+  background-color: #1ABC9C;
   padding: 8px 13px;
   margin: 10px 0px;
   color: white;
@@ -607,9 +618,10 @@ button[type=submit] {
   border: none;
   font-size: 1.2rem;
   cursor: pointer;
+  border-radius: 20px;
 }
 button[type=submit]:hover {
-  background-color: #57A639;
+  background-color: #0f6957;
 }
 
 button[type=reset] {
@@ -622,6 +634,7 @@ button[type=reset] {
   border: none;
   font-size: 1.2rem;
   cursor: pointer;
+  border-radius: 20px;
 }
 button[type=reset]:hover {
   background-color: #FF7514;
@@ -630,42 +643,128 @@ button[type=reset]:hover {
 p {
   text-align: center;
   font-size: 1.2rem;
-  color: rgba(26, 24, 24, 0.692);
+  color: rgb(255, 255, 255);
+  font-weight: bold;
 }
 
 a {
-  color: rgba(7, 7, 248, 0.562);
+  color: #18b95c;
   cursor: pointer;
   font-size: 1.1rem;
   text-decoration: none;
-  /* Media queries para pantallas más pequeñas */
+  font-weight: bold;
 }
 a:hover {
-  color: rgba(11, 11, 190, 0.562);
+  color: #047c36;
 }
 a:focus {
-  color: rgba(3, 3, 85, 0.466);
+  color: #006e2e;
 }
 
-@media screen and (max-width: 600px) {
+/* Estilos base */
+#register, form.sigin-form {
+  width: 100%;
+  margin-top: 100px;
+  padding: 20px;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+img {
+  max-width: 100%;
+}
+
+input.sigin-inp {
+  padding: 15px 10px;
+  width: 100%;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+  margin-bottom: 10px;
+}
+
+button[type=submit], button[type=reset] {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+p {
+  font-size: 1.2rem;
+}
+
+a {
+  font-size: 1.2rem;
+}
+
+/* Media queries para pantallas más pequeñas */
+@media screen and (max-width: 970px) {
   #register, form.sigin-form {
-    width: 90%;
-    margin-top: 20px;
-    padding: 10px;
-    height: auto;
-    max-width: 90%;
+    padding: 15px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   h1 {
-    font-size: 1.8rem;
-  }
-  img {
-    width: 1.5rem;
+    font-size: 1.5rem;
   }
   input.sigin-inp {
-    padding: 10px 5px;
+    padding: 12px 8px;
+    font-size: 1.2rem;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+  }
+  input.sigin-inp ::placeholder {
+    font-weight: bold;
+    font-size: 1.2rem;
   }
   button[type=submit], button[type=reset] {
-    padding: 6px 10px;
+    padding: 8px 16px;
+  }
+  p {
+    font-size: 1rem;
+  }
+  a {
+    font-size: 1rem;
+  }
+}
+/* Media queries para pantallas más pequeñas */
+@media screen and (max-width: 970px) {
+  #register, form.sigin-form {
+    margin-top: 50px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  img {
+    width: 100%;
+  }
+  input.sigin-inp {
+    padding: 15px 10px;
+    border-width: 2px;
+  }
+  input.sigin-inp ::placeholder {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  button[type=submit], button[type=reset] {
+    padding: 8px 16px;
   }
   p {
     font-size: 1rem;

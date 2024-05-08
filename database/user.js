@@ -1,10 +1,10 @@
-const { obtenerConexion } = require('../conection');
+const { obtenerConexion } = require('./conection');
 
 // Función para insertar un nuevo usuario en la base de datos MySQL
-async function userRegister(nombre, email, password) {
+async function userRegister(name, email, firstpassword) {
     const conexion = await obtenerConexion();
     try {
-        await conexion.query('INSERT INTO usuarios (nombre, email, password_hash) VALUES (?, ?, ?)', [nombre, email, password]);
+        await conexion.query('INSERT INTO usuarios (name, email, password_hash) VALUES (?, ?, ?)', [name, email, firstpassword]);
         console.log('Usuario insertado correctamente');
     } catch (error) {
         console.error('Error al insertar usuario:', error);
@@ -15,10 +15,10 @@ async function userRegister(nombre, email, password) {
 }
 
 // Función para obtener un usuario por su nombre de usuario
-async function obtenerPorNombre(nombre) {
+async function obtenerPorNombre(name) {
     const conexion = await obtenerConexion();
     try {
-        const [results] = await conexion.query('SELECT * FROM usuarios WHERE nombre = ?', [nombre]);
+        const [results] = await conexion.query('SELECT * FROM usuarios WHERE name = ?', [name]);
         return results[0];
     } catch (error) {
         console.error('Error al obtener usuario por nombre:', error);

@@ -102,9 +102,17 @@ body.layout-enc
   position: relative
   z-index: 1
 
-@media screen and (max-width: 768px)
-  .navbar .menu-items
-    width: 95vw
+@media screen and (max-width: 600px)
+  .contenedor
+    border: 5px solid #007bff
+    padding: 10px
+
+  .titulo
+    font-size: 20px
+
+  .texto
+    font-size: 16px
+
 
 
 .navbar .menu-items li
@@ -483,13 +491,14 @@ input[type="submit"]:focus
     a:hover
       color: #f2672e
 
-/* Media queries para hacer el diseño más responsive */
+
 /* Media queries para hacer el diseño más responsive */
 @media screen and (max-width: 600px)
   .login
     width: 90%
     max-width: none
-    margin: 0 auto  // Centra el formulario
+    margin: 10% auto
+    heigth: 120%
 
   .form input[type="text"],
   input[type="password"],
@@ -522,21 +531,21 @@ input[type="submit"]:focus
 //Estilos de sigin
 /* Variables */
 $font-family: 'Lato', sans-serif
-$body-bg-image: url('/img/bkg-hacer.png')
-$register-bg-color: #fff
+$body-bg-image: #31302B
+$register-bg-color: #464541
 $form-bg-color: rgba(235, 235, 205, 0.7)
-$submit-button-bg-color: rgb(34, 139, 34)
-$submit-button-hover-bg-color: #57A639
+$submit-button-bg-color: #1ABC9C
+$submit-button-hover-bg-color: #0f6957
 $reset-button-bg-color: #FFA420
 $reset-button-hover-bg-color: #FF7514
-$paragraph-color: rgba(26, 24, 24, 0.692)
-$link-color: rgba(7, 7, 248, 0.562)
-$link-hover-color: rgba(11, 11, 190, 0.562)
-$link-focus-color: rgba(3, 3, 85, 0.466)
+$paragraph-color: rgb(255, 255, 255)
+$link-color: #18b95c
+$link-hover-color: #047c36
+$link-focus-color: #006e2e
 
 
 body.sigin
-  background-image: $body-bg-image
+  background-color: #31302B
   background-repeat: no-repeat
   background-attachment: fixed
   opacity: 0.99
@@ -547,17 +556,20 @@ article
   height: auto
 
 #register, form.sigin-form
-  width: 600px
-  height: 455px
+  width:700px
+  height: 500px
   margin: 0 auto
   margin-top: 45px
-  background-color: $register-bg-color
+  background-color: #464541
   padding: 5px
   border-radius: 3px
+  margi-top: 20px
 
 h1 
   text-align: center
   font-size: 2.1rem
+  font-weight: bold
+  color: $paragraph-color
 
 img 
   width: 2rem
@@ -572,6 +584,7 @@ input.sigin-inp
   color: #666
   border-radius: 1px
   border: 1px solid #ccc
+  border-radius: 20px
 
 button[type="submit"] 
   background-color: $submit-button-bg-color
@@ -582,6 +595,7 @@ button[type="submit"]
   border: none
   font-size: 1.2rem
   cursor: pointer
+  border-radius: 20px
 
   &:hover 
     background-color: $submit-button-hover-bg-color
@@ -596,6 +610,7 @@ button[type="reset"]
   border: none
   font-size: 1.2rem
   cursor: pointer
+  border-radius: 20px
 
   &:hover 
     background-color: $reset-button-hover-bg-color
@@ -604,12 +619,14 @@ p
   text-align: center
   font-size: 1.2rem
   color: $paragraph-color
+  font-weight: bold
 
 a 
   color: $link-color
   cursor: pointer
   font-size: 1.1rem
   text-decoration: none
+  font-weight: bold
 
   &:hover 
     color: $link-hover-color
@@ -617,29 +634,103 @@ a
   &:focus 
     color: $link-focus-color
 
-  /* Media queries para pantallas más pequeñas */
-@media screen and (max-width: 600px)
+/* Estilos base */
+#register, form.sigin-form
+  width: 100%
+  margin-top: 100px /* Ajustado para centrar más verticalmente */
+  padding: 20px
+  max-width: 800px
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+
+h1 
+  font-size: 2rem
+
+img 
+  max-width: 100%
+
+input.sigin-inp 
+  padding: 15px 10px /* Aumentamos el tamaño del relleno */
+  width: 100%
+  border-radius: 10px
+  border: 2px solid #ccc /* Hacemos el borde más grueso */
+  margin-bottom: 10px /* Aumentamos el espacio entre inputs */
+
+button[type="submit"], button[type="reset"]
+  padding: 10px 20px /* Aumentamos el tamaño del relleno */
+  border: none
+  background-color: #007bff
+  color: white
+  border-radius: 10px
+  cursor: pointer
+
+p 
+  font-size: 1.2rem
+
+a 
+  font-size: 1.2rem
+
+/* Media queries para pantallas más pequeñas */
+@media screen and (max-width: 970px)
   #register, form.sigin-form
-    width: 90% /* Reduce el ancho del formulario */
-    margin-top: 20px /* Ajusta el margen superior */
-    padding: 10px /* Ajusta el relleno */
-    height: auto /* Cambia la altura a automática */
-    max-width: 90% /* Limita el ancho máximo del formulario */
+    padding: 15px
+    margin-top: 50px /* Ajustado para centrar más verticalmente */
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
 
   h1 
-    font-size: 1.8rem /* Reduce el tamaño del título */
-
-  img 
-    width: 1.5rem /* Reduce el tamaño de la imagen */
+    font-size: 1.5rem
 
   input.sigin-inp 
-    padding: 10px 5px /* Reduce el relleno de los campos de entrada */
+    padding: 12px 8px
+    font-size: 1.2rem /* Aumenta el tamaño del texto */
+    border: 2px solid #ccc /* Añade un borde */
+    border-radius: 10px /* Hace que los bordes sean redondeados */
+    ::placeholder /* Estilos del placeholder */
+      font-weight: bold /* Placeholder en negritas */
+      font-size: 1.2rem /* Aumenta el tamaño del placeholder */
 
   button[type="submit"], button[type="reset"]
-    padding: 6px 10px /* Reduce el relleno de los botones */
+    padding: 8px 16px
 
   p 
-    font-size: 1rem /* Reduce el tamaño del texto de párrafo */
+    font-size: 1rem 
 
   a 
-    font-size: 1rem /* Reduce el tamaño del texto de los enlaces */
+    font-size: 1rem 
+
+/* Media queries para pantallas más pequeñas */
+@media screen and (max-width: 970px)
+  #register, form.sigin-form
+    margin-top: 50px /* Ajustado para centrar más verticalmente */
+    padding: 20px
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+
+  h1 
+    font-size: 1.5rem
+
+  img 
+    width: 100%
+
+  input.sigin-inp 
+    padding: 15px 10px /* Ajustado el relleno */
+    border-width: 2px /* Se restaura el grosor del borde */
+    ::placeholder 
+      font-weight: bold
+      font-size: 1.2rem /* Se reduce el tamaño del placeholder */
+
+  button[type="submit"], button[type="reset"]
+    padding: 8px 16px
+
+  p 
+    font-size: 1rem 
+
+  a 
+    font-size: 1rem 

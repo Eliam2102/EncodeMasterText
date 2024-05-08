@@ -8,21 +8,23 @@ block content
       link(rel="stylesheet", href="css/styles.css")
     body.body-container
       main.main-container
-        .input-container
-          textarea.input-text(id="input-text", rows="10", cols="50", placeholder="Introduce el texto a cifrar", maxlength="5000")
-          div.counter-container
-            span#char-count 0/5000
-          select#encryption-type.select
-            option(value="base64") Base64
-            option(value="cesar") Código César
-            option(value="sustitucion") Sustitución
-            option(value="hexadecimal") Hexadecimal
-            option(value="hexadecimal") Binario
-          input#num-of-turns(type="number", min="1", max="10", placeholder="Número de vueltas")
-          button#encrypt-btn.button Cifrar
-        .output-container
-          textarea#output-text.output-text(rows="10", cols="50", placeholder="Resultado cifrado", readonly="")
-          button#copy-btn.button Copiar resultado
+        form(action="/encrypt", method="post")
+          .input-container
+            textarea.input-text(id="input-text", name="text", rows="10", cols="50", placeholder="Introduce el texto a cifrar", maxlength="5000")
+            div.counter-container
+              span#char-count 0/5000
+            select#encryption-type(name="encryptionType", class="select")
+              option(value="base64") Base64
+              option(value="cesar") Código César
+              option(value="sustitucion") Sustitución
+              option(value="hexadecimal") Hexadecimal
+              option(value="hexadecimal") Binario
+            input#num-of-turns(name="rounds", type="number", min="1", max="10", placeholder="Número de vueltas")
+            button#encrypt-btn.button(type="submit") Cifrar
+          .output-container
+            textarea#output-text.output-text(rows="10", cols="50", placeholder="Resultado cifrado", readonly="",id ="resultado", name="resultado")
+            button#copy-btn.button(type="button") Copiar resultado
+    script(src="../controllers/convertCodeBase64.js")
     script.
       document.addEventListener('DOMContentLoaded', function() {
         const inputText = document.getElementById('input-text');

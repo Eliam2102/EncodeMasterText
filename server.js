@@ -5,14 +5,13 @@ const path = require('path');
 const flash = require('connect-flash');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const SQLiteStore = require('connect-sqlite3')(session);
-const usuarios = require('./database/tables/users'); // Archivo contenedor de querys para MySQL
+const usuarios = require('./database/user'); // Archivo contenedor de querys para MySQL
 const dotenv = require('dotenv');
-const cookieParser = require('cookie-parser');
+// const cookieParser = require('cookie-parser');
 const authMiddleWare = require('./middlewares/authMiddleware');
 
 //Configura Cookie Parser
-app.use(cookieParser());
+// app.use(cookieParser());
 
 //Configura DotEnv
 dotenv.config();
@@ -21,8 +20,7 @@ dotenv.config();
 app.use(session({
   secret: process.env.ACCESS_TOKEN_SECRET, // Clave secreta para firmar la cookie de sesión
   resave: false,
-  saveUninitialized: false,
-  store: new SQLiteStore({ db: 'sessionsDB.sqlite', table: 'sessions' })
+  saveUninitialized: false
 }));
 
 // Configura connect-flash
@@ -104,7 +102,7 @@ app.get('/logout', async (req, res) => {
       console.log('req.sessionStore.clear finalizado correctamente');
     });
     res.clearCookie('token');
-    res.redirect('/'); //Redireccionar al index
+    res.redirect('/');
   });
 });
 
