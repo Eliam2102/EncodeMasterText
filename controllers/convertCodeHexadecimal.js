@@ -1,5 +1,5 @@
 // Función para convertir texto a hexadecimal
-function textToHexadecimal(text) {
+function convertCodeHexadecimal(text) {
     let hexadecimalString = "";
     for (let i = 0; i < text.length; i++) {
         let hexChar = text[i].charCodeAt(0).toString(16);
@@ -7,3 +7,5 @@ function textToHexadecimal(text) {
     }
     return hexadecimalString;
 }
+
+module.exports = convertCodeHexadecimal;

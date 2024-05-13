@@ -241,291 +241,151 @@ body
     width: 100%
 
 
-//Estilos login
-$loginfonts: 13px/20px "Open Sans", Tahoma, Verdana, sans-serif
+//Estilos del login
+*, *:before, *:after
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+  box-sizing: border-box
 
-//colors
-$fontscolor: #a7a599
-$loginbg: #31302b
-$headerbg: #1abc9c
-$buttoncolor: #16a085
-$buttonhover: rgba(26, 188, 156, 1)
-$iconhover: #27ae60
+$maincolor: #1ABC9C
+$maincolor2: #31302B	
 
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,300,400,700")
+=flexbox
+  display: -webkit-box
+  display: -moz-box
+  display: -ms-flexbox
+  display: -webkit-flex
+  display: flex
+
+=flex($flex-value)
+  -webkit-box-flex: $flex-value
+  -moz-box-flex: $flex-value
+  -webkit-flex: $flex-value
+  -ms-flex: $flex-value
+  flex: $flex-value
+
+=justify($justify-value)
+  -webkit-justify-content: $justify-value
+  -moz-justify-content: $justify-value
+  justify-content: $justify-value
+
+=box-pack($box-pack)
+  -webkit-box-pack: $box-pack
+  -moz-box-pack: $box-pack
+  -ms-flex-pack: $box-pack
+
+=trans($prop, $time)
+  -webkit-transition: $prop $time
+  -moz-transition: $prop $time
+  -ms-transition: $prop $time
+  -o-transition: $prop $time
+  transition: $prop $time
+
+=border-radius($bdrs)
+  -webkit-border-radius: $bdrs
+  -moz-border-radius: $bdrs
+  border-radius: $bdrs
+
+body.login, html, .login_form
+  height: 100%
 
 body.login
-  font: $loginfonts
-  color: $fontscolor
-  background: $loginbg
+  background: #31302B
 
 
-/* === Logo === */
-.logo
-  background-position: center
-  height: 60px
-  width: 140px
-  margin: 20px auto 30px auto
 
-/* === Form === */
-.form
+.login_form
+  +flexbox
+  +flex(center)
+  +justify(center)
+  +box-pack(center)
+  -webkit-align-items: center
+  align-items: center
+  display: flex
+  flex-direction: column
+
+.sincuenta-login
+  margin-top: -50px
+  display: flex
+  flex-direction: column
+  align-items: center
+
+.login-wrapper
+  max-width: 550px
   width: 100%
 
-  .field
-    position: relative
-    margin: 0 20px
-
-    i
-      font-size: 18px
-      left: 0px
-      top: 0px
-      position: absolute
-      height: 44px
-      width: 44px
-      color: #f7f3eb
-      background: #676056
-      text-align: center
-      line-height: 44px
-      transition: all 0.3s ease-out
-      pointer-events: none
-
-/* === Login styles === */
-.login
-  position: absolute
-  top: 50%
-  left: 50%
-  transform: translate(-50%, -50%)
-  width: 90%
-  max-width: 400px 
-  height: auto
-  background: white
-  border-radius: 3px
-
-  &:before
-    content: ""
-    position: absolute
-    top: -8px
-    right: -8px
-    bottom: -8px
-    left: -8px
-    z-index: -1
-    background: rgba(255, 255, 255, 0.1)
-    border-radius: 4px
-
-  h1
-    line-height: 55px
-    font-size: 24px
-    font-weight: bold
-    font-family: "Open Sans", sans-serif
-    text-transform: uppercase
-    color: #fff
-    text-align: center
-    background: $headerbg
-    border-top-left-radius: 3px
-    border-top-right-radius: 3px
-
-  .submit
-    text-align: center
-
-  p
-    &:first-child
-      margin-top: 30px
-
-    .remember
-      float: left
-
-      label
-        color: #ffff
-        font-size: 12px
-        cursor: pointer
-
-    .forgot
-      float: right
-      margin-right: 20px
-
-      a
-        color: #a7a599
-        font-size: 12px
-        text-decoration: none
-        font-style: italic
-        transition: all 0.3s ease-out
-
-        &:hover
-          color: #f2672e
-
-/* === Input Form === */
-::-webkit-input-placeholder
-  color: #272209
-  font-family: "Open Sans"
-
-:-moz-placeholder
-  color: #272209 !important
-  font-family: "Open Sans"
-
-.form input[type="text"],
-input[type="password"]
-  font-family: "Open Sans", Calibri, Arial, sans-serif
-  font-size: 14px
-  font-weight: 400
-  padding: 10px 15px 10px 55px
-  position: relative
-  width: calc(100% - 40px) /* Utiliza el 100% del ancho menos el padding */
-  max-width: 300px /* Limita el ancho máximo de los campos de entrada */
-  height: 40px
-  color: #676056
-  border: none
-  background: #f7f3eb
-  color: #777
-  transition: color 0.3s ease-out
-
-.form input[type="text"]
-  margin-bottom: 15px
-
-.form input[type="text"]:hover ~ i,
-.form input[type="password"]:hover ~ i
-  color: $iconhover
-
-.form input[type="text"]:focus ~ i,
-.form input[type="password"]:focus ~ i
-  color: $iconhover
-
-.form input[type="text"]:focus,
-.form input[type="password"]:focus,
-.form button[type="submit"]:focus
-  outline: none
-
-.form input[type="submit"]
-  margin-top: 15px
-  width: calc(100% - 40px) /* Utiliza el 100% del ancho menos el padding */
-  max-width: 300px /* Limita el ancho máximo del botón de envío */
+.logo
   text-align: center
-  font-size: 14px
-  font-family: "Open Sans", sans-serif
-  font-weight: bold
-  padding: 12px 0
-  letter-spacing: 0
-  box-shadow: inset 0px 0px 0px 0px $buttonhover
-  color: #fff
-  background-color: $buttoncolor
-  text-shadow: none
-  text-transform: uppercase
-  border: none
-  cursor: pointer
+
+  img.login-img
+    max-width: 250px
+    width: 100%
+    margin: 1em auto 2em
+
+form.login-form
+  background: #464541
+  padding: 2em 1em
+  font-family: helvetica, sans-serif
+  +border-radius(5px)
+  height: 350px
+
+  label
+    color: #000
+    margin: 0 3% .25em
+    display: block
+    font-family: helvetica, sans-serif
+    font-weight: bold
+
+  input
+    width: 94%
+    padding: .5em .25em
+    margin: 0 3% 1em
+    font-size: 1.2em
+    border: 2px solid #000
+    outline: none
+    +trans(all, .25s)
+    +border-radius(10px)
+
+    &.password
+      padding-right: 4rem
+
+  input:focus
+    border: 2px solid $maincolor
+
+  button
+    width: 94%
+    margin: 2em 3% 0
+    border: none
+    background: #007bff
+    padding: 1em 0
+    font-size: 1.25em
+    font-weight: bold
+    clear: both
+    color: #fffff
+    +border-radius(5px)
+    outline: none
+    +trans(all, .25s)
+    cursor: pointer
+
+  button:focus, button:hover
+    background: $maincolor2
+
+.hide-show
+  width: 94%
+  margin: -3.62em 3% 0 1.5%
   position: relative
-  margin-bottom: 20px
-  -webkit-animation: shadowFadeOut 0.4s
-  -moz-animation: shadowFadeOut 0.4s
-
-.form input[type="submit"]:hover,
-input[type="submit"]:focus
-  color: #fff
-  box-shadow: inset 0px 46px 0px 0px $buttonhover
-  -webkit-animation: shadowFade 0.4s
-  -moz-animation: shadowFade 0.4s
-
-
-@keyframes shadowFade
-  0%
-    box-shadow: inset 0px 0px 0px 0px $buttonhover
-    color: #fff
-  100%
-    box-shadow: inset 0px 46px 0px 0px $buttonhover
-    color: #fff
-
-@keyframes shadowFadeOut
-  0%
-    box-shadow: inset 0px 46px 0px 0px $buttonhover
-    color: #fff
-  100%
-    box-shadow: inset 0px 0px 0px 0px $buttonhover
-    color: #fff
-
-@-webkit-keyframes shadowFade
-  0%
-    box-shadow: inset 0px 0px 0px 0px $buttonhover
-    color: #fff
-  100%
-    box-shadow: inset 0px 46px 0px 0px $buttonhover
-    color: #fff
-
-@-webkit-keyframes shadowFadeOut
-  0%
-    box-shadow: inset 0px 46px 0px 0px $buttonhover
-    color: #fff
-  100%
-    box-shadow: inset 0px 0px 0px 0px $buttonhover
-    color: #fff
-
-@-moz-keyframes shadowFade
-  0%
-    box-shadow: inset 0px 0px 0px 0px $buttonhover
-    color: #fff
-  100%
-    box-shadow: inset 0px 46px 0px 0px $buttonhover
-    color: #fff
-
-@-moz-keyframes shadowFadeOut
-  0%
-    box-shadow: inset 0px 44px 0px 0px $buttonhover
-    color: #fff
-  100%
-    box-shadow: inset 0px 0px 0px 0px $buttonhover
-    color: #fff
-
-/*continued styling for input */
-.form input[type="checkbox"]
+  z-index: 5
   display: none
 
-/* === Copyright === */
-.copyright
-  margin-top: 30px
-  text-align: center
-
-  p,
-  a
-    color: #828078
-    font-size: 12px
-    text-decoration: none
-    transition: color 0.3s ease-out
-
-    a:hover
-      color: #f2672e
+  span
+    background: $maincolor
+    font-size: 1em
+    padding: .5em
+    float: right
+    +border-radius(5px)
+    cursor: pointer
 
 
-/* Media queries para hacer el diseño más responsive */
-@media screen and (max-width: 600px)
-  .login
-    width: 90%
-    max-width: none
-    margin: 10% auto
-    heigth: 120%
-
-  .form input[type="text"],
-  input[type="password"],
-  .form input[type="submit"]
-    width: calc(100% - 30px)
-    max-width: none
-    margin: 10px auto
-
-//Icons
-.fa
-  font-size: 18px
-  left: 0px
-  top: 0px
-  position: absolute
-  height: 44px
-  width: 44px
-  background: #ffff
-  text-align: center
-  line-height: 44px
-  transition: all 0.3s ease-out
-  pointer-events: none
-
-.fa.fa-user
-  color: #27ae60
-
-.fa.fa-lock
-  color: #27ae60
 
 
 //Estilos de sigin
@@ -620,6 +480,7 @@ p
   font-size: 1.2rem
   color: $paragraph-color
   font-weight: bold
+  margin-top: -50px
 
 a 
   color: $link-color
@@ -627,6 +488,7 @@ a
   font-size: 1.1rem
   text-decoration: none
   font-weight: bold
+  margin-top: -40px
 
   &:hover 
     color: $link-hover-color
@@ -693,38 +555,6 @@ a
     ::placeholder /* Estilos del placeholder */
       font-weight: bold /* Placeholder en negritas */
       font-size: 1.2rem /* Aumenta el tamaño del placeholder */
-
-  button[type="submit"], button[type="reset"]
-    padding: 8px 16px
-
-  p 
-    font-size: 1rem 
-
-  a 
-    font-size: 1rem 
-
-/* Media queries para pantallas más pequeñas */
-@media screen and (max-width: 970px)
-  #register, form.sigin-form
-    margin-top: 50px /* Ajustado para centrar más verticalmente */
-    padding: 20px
-    display: flex
-    flex-direction: column
-    justify-content: center
-    align-items: center
-
-  h1 
-    font-size: 1.5rem
-
-  img 
-    width: 100%
-
-  input.sigin-inp 
-    padding: 15px 10px /* Ajustado el relleno */
-    border-width: 2px /* Se restaura el grosor del borde */
-    ::placeholder 
-      font-weight: bold
-      font-size: 1.2rem /* Se reduce el tamaño del placeholder */
 
   button[type="submit"], button[type="reset"]
     padding: 8px 16px

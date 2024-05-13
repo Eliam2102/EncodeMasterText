@@ -3,6 +3,7 @@ html(lang="en")
   head
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="icon", type="image/png", href="/img/letters.png")
     title EncodeMasterText
     link(rel="stylesheet", href="css/styles.css")
   body.layout-enc
@@ -18,12 +19,13 @@ html(lang="en")
             h1 EncodeMaster
           .menu-items
             li: a(href='/') Inicio
-            li: a(href='#') Perfil
-            li: a(href='#') Historial
-            li: a(href='#') Actividad
-            if user != ''
+            li: a(href='/user-info') Perfil
+            li: a(href='/historial-encode') Historial
+            li: a(href='/activity') Actividad
             li
-              a(href='#')
-                i(class='material-symbols-rounded') logout
+              a(href='/login') Inicia sesion
+            li
+                a(href='/logout')
+                  i(class='material-symbols-rounded') logout
     .container
     block content

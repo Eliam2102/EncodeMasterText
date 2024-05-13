@@ -5,13 +5,16 @@ const path = require('path');
 const flash = require('connect-flash');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const usuarios = require('./database/user'); // Archivo contenedor de querys para MySQL
+const SQLiteStore = require('connect-sqlite3')(session);
+const usuarios = require('./database/tables/user');
 const dotenv = require('dotenv');
-// const cookieParser = require('cookie-parser');
-const authMiddleWare = require('./middlewares/authMiddleware');
+const cookieParser = require('cookie-parser');
+
+
+
 
 //Configura Cookie Parser
-// app.use(cookieParser());
+app.use(cookieParser());
 
 //Configura DotEnv
 dotenv.config();
@@ -20,7 +23,8 @@ dotenv.config();
 app.use(session({
   secret: process.env.ACCESS_TOKEN_SECRET, // Clave secreta para firmar la cookie de sesión
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  store: new SQLiteStore({ db: 'sessionsDB.sqlite', table: 'sessions' }) // Almacena las sesiones en una base de datos SQLite
 }));
 
 // Configura connect-flash
@@ -32,13 +36,13 @@ app.use(passport.session());
 
 // Configurar estrategia de autenticación local
 passport.use(new LocalStrategy(
-  async (username, password, done) => {
+  async (name, password, done) => {
     try {
-      const user = await usuarios.obtenerPorNombre(username);
+      const user = await usuarios.obtenerPorNombre(name);
       if (!user) {
         return done(null, false, { message: 'Usuario incorrecto.' });
       }
-      const passwordMatch = await authMiddleWare.comparePassword(firstpassword, user.password_hash);
+      const passwordMatch = await authMiddleWare.comparePassword(password, user.password_hash);
       if (!passwordMatch) {
         return done(null, false, { message: 'Contraseña incorrecta.' });
       }
@@ -106,10 +110,19 @@ app.get('/logout', async (req, res) => {
   });
 });
 
+
 const router = require('./routes/routes');
 
 //Manejo de todas las solicitudes para las ruta principal o subrutas
 app.use('/', router);
+
+
+
+
+// Configuración del middleware express.urlencoded
+app.use(express.urlencoded({ extended: true }));
+// Middleware para entender formato JSON
+app.use(express.json());
 
 
 //Puerto en el cual se escucha el servidor

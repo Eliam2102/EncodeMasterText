@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 //Permite la configuración de DontEnv
 dotenv.config();
 
-//Creación de la conecxión a la BD
+//Creación de la conexión a la BD
 const pool = mysql2.createPool({
     host: process.env.MYSQL_HOST,
     user: process.env.MYSQL_USER,

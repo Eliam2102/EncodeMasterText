@@ -1,9 +1,15 @@
-// Función para convertir texto a binario
-function textToBinary(text) {
-    let binaryString = "";
+//Funcion para cifrar a binario
+function convertCodeBinario(text) {
+    let binary = '';
     for (let i = 0; i < text.length; i++) {
-        let binaryChar = text[i].charCodeAt(0).toString(2);
-        binaryString += "0".repeat(8 - binaryChar.length) + binaryChar;
+        // Obtiene el (Código Estándar Estadounidense para el Intercambio de Información) de cada caracter
+        let code = text.charCodeAt(i);
+        // Convierte el (Código Estándar Estadounidense para el Intercambio de Información)
+        let binaryChar = code.toString(2).padStart(8, '0');
+        // Agrega el binaria a la los cracteres binarios.
+        binary += binaryChar;
     }
-    return binaryString;
+    return binary;
 }
+
+module.exports = convertCodeBinario;

@@ -3,32 +3,44 @@ extends layout
 block content
     head
       title EncodeMasterText
+      link(rel="icon", type="image/png", href="/img/letters.png")
       meta(charset="UTF-8")
       meta(name="viewport", content="width=device-width, initial-scale=0.97")
       link(rel="stylesheet", href="css/styles.css")
     body.body-container
       main.main-container
-        form(action="/encrypt", method="post")
+        form(action="/cypher", method="post")
           .input-container
-            textarea.input-text(id="input-text", name="text", rows="10", cols="50", placeholder="Introduce el texto a cifrar", maxlength="5000")
+            textarea.input-text(id="input-text", name="textoEntrada", rows="10", cols="50", placeholder="Introduce el texto a cifrar 🎩🕵️‍♂️💀", maxlength="5000")= textoEntrada
             div.counter-container
-              span#char-count 0/5000
-            select#encryption-type(name="encryptionType", class="select")
-              option(value="base64") Base64
-              option(value="cesar") Código César
-              option(value="sustitucion") Sustitución
-              option(value="hexadecimal") Hexadecimal
-              option(value="hexadecimal") Binario
-            input#num-of-turns(name="rounds", type="number", min="1", max="10", placeholder="Número de vueltas")
+              span#char-count 0/5000 👾
+            select#encryption-type(name="tipoCifrado", class="select")
+              option(value="base64") Base64 6️⃣ 4️⃣
+              option(value="cesar") Código César 🌿🌿
+              option(value="sustitucion") Sustitución 🔁 🔄
+              option(value="hexadecimal") Hexadecimal 1️⃣🅰️2️⃣🅱️3️⃣
+              option(value="binario") Binario 1️⃣0️⃣1️⃣0️⃣1️⃣1️⃣
+            select#rounds-number(name="vueltasCifrado", class="select")
+              option(value="1") 1
+              option(value="2") 2
+              option(value="3") 3
+              option(value="4") 4
+              option(value="5") 5
+              option(value="6") 6
+              option(value="5") 7
+              option(value="5") 8
+              option(value="5") 9
+              option(value="5") 10
             button#encrypt-btn.button(type="submit") Cifrar
-          .output-container
-            textarea#output-text.output-text(rows="10", cols="50", placeholder="Resultado cifrado", readonly="",id ="resultado", name="resultado")
-            button#copy-btn.button(type="button") Copiar resultado
-    script(src="../controllers/convertCodeBase64.js")
+        .output-container
+          textarea#output-text.output-text(rows="10", cols="50", placeholder="Resultado  🛡️💀🔒💀 -----> 🖥️💀🔫", readonly="", name="encryptedText")=textoSalida
+          button#copy-btn.button(type="button") Copiar resultado
     script.
       document.addEventListener('DOMContentLoaded', function() {
         const inputText = document.getElementById('input-text');
         const charCount = document.getElementById('char-count');
+        const outputText = document.getElementById('output-text');
+        const form = document.querySelector('form');
 
         inputText.addEventListener('input', function() {
           const inputLength = inputText.value.length;
@@ -36,7 +48,6 @@ block content
         });
 
         const copyButton = document.getElementById('copy-btn');
-        const outputText = document.getElementById('output-text');
 
         copyButton.addEventListener('click', function() {
           outputText.select();

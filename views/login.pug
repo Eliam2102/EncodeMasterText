@@ -5,16 +5,46 @@ html
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(rel="stylesheet", type="text/css", href="css/styles.css")
-    link(href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap", rel="stylesheet")
-    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
+    link(rel="icon", type="image/png", href="/img/letters.png")
+
   body.login
-    h1 Login
-    form.form(method="post", action="/login")
-      p.field
-        input(type="text", name="name", placeholder="Nombre", required)
-        i.fa.fa-user
-      p.field
-        input(type="password", name="firstPassword", placeholder="Contraseña", required)
-        i.fa.fa-lock
-      p.submit
-        input(type="submit", name="sent", value="Login")
+    div.login_form
+      section.login-wrapper
+        div.logo
+          a(target="_blank" rel="noopener" href="/")
+            img.login-img(src="img/ANO-nimus.png" alt="")
+        form.login-form(method="post" action="/login")
+          h1 Inicia Sesión
+          label(for="name") Name
+          input(type="text" name="name" required)
+          label(for="password") Password
+          input.password(type="password" name="password" required)
+          div.hide-show
+            span Ver
+          button(type="submit") Iniciar sesión
+          div.sincuenta-login
+            p
+              | ¿No tienes cuenta?
+              a(href="/sigin") Regístrate
+    script.
+      $(document).ready(function() {
+        $('.hide-show').show();
+        $('.hide-show span').addClass('show');
+        
+        $('.hide-show span').click(function(){
+          if ($(this).hasClass('show')) {
+            $(this).text('Hide');
+            $('input[name="password"]').attr('type','text');
+            $(this).removeClass('show');
+          } else {
+            $(this).text('Show');
+            $('input[name="password"]').attr('type','password');
+            $(this).addClass('show');
+          }
+        });
+        
+        $('form button[type="submit"]').on('click', function(){
+          $('.hide-show span').text('Show').addClass('show');
+          $('.hide-show').parent().find('input[name="password"]').attr('type','password');
+        });
+      });
