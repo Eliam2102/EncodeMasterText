@@ -1,3 +1,4 @@
+//Importaciones adecuadas
 const express = require('express');
 const app = express();
 const session = require('express-session');
@@ -9,8 +10,7 @@ const SQLiteStore = require('connect-sqlite3')(session);
 const usuarios = require('./database/tables/user');
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
-
-
+const authMiddleWare = require('./middlewares/authMiddleware');
 
 
 //Configura Cookie Parser
@@ -27,6 +27,7 @@ app.use(session({
   store: new SQLiteStore({ db: 'sessionsDB.sqlite', table: 'sessions' }) // Almacena las sesiones en una base de datos SQLite
 }));
 
+
 // Configura connect-flash
 app.use(flash());
 
@@ -36,9 +37,9 @@ app.use(passport.session());
 
 // Configurar estrategia de autenticación local
 passport.use(new LocalStrategy(
-  async (name, password, done) => {
+  async (username, password, done) => {
     try {
-      const user = await usuarios.obtenerPorNombre(name);
+      const user = await usuarios.obtenerPorNombre(username);
       if (!user) {
         return done(null, false, { message: 'Usuario incorrecto.' });
       }
@@ -71,6 +72,7 @@ app.use((err, req, res, next) => {
   res.status(500).send('Algo salió mal');
 });
 
+
 app.use(express.urlencoded({ extended: true }));
 
 //Procesa los archivos estáticos que están en la carpeta public
@@ -78,7 +80,7 @@ app.use(express.static('public'));
 app.use(express.json());
 
 //Configuración de la plantilla pug
-app.set('view engine', 'pug');
+app.set('view engine', 'pug'); //Motor de plantillas
 app.set('views', path.join(__dirname, 'views'));
 
 
@@ -106,27 +108,17 @@ app.get('/logout', async (req, res) => {
       console.log('req.sessionStore.clear finalizado correctamente');
     });
     res.clearCookie('token');
-    res.redirect('/');
+    res.redirect('/'); // Redirigir al index
   });
 });
 
-
 const router = require('./routes/routes');
-
 //Manejo de todas las solicitudes para las ruta principal o subrutas
 app.use('/', router);
-
-
-
-
-// Configuración del middleware express.urlencoded
-app.use(express.urlencoded({ extended: true }));
-// Middleware para entender formato JSON
-app.use(express.json());
 
 
 //Puerto en el cual se escucha el servidor
 const port = 3000;
 app.listen(port, () => {
-    console.log(`Servidor a la escucha en http://localhost:${port}`);
+    console.log(`Servidor iniciado en http://localhost:${port}`);
 });

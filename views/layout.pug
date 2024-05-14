@@ -19,12 +19,11 @@ html(lang="en")
             h1 EncodeMaster
           .menu-items
             li: a(href='/') Inicio
-            li: a(href='/user-info') Perfil
-            li: a(href='/historial-encode') Historial
-            li: a(href='/activity') Actividad
+            li: a(href='/user-profile') Perfil
             li
               a(href='/login') Inicia sesion
-            li
+            if user != ''
+              li
                 a(href='/logout')
                   i(class='material-symbols-rounded') logout
     .container

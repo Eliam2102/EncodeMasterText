@@ -88,8 +88,8 @@ body.layout-enc
 
 .navbar .menu-items
   padding-top: 120px
-  height: 130vh
-  width: 90vw
+  height: 140vh
+  width: 80vw
   transform: translate(-150%)
   display: flex
   flex-direction: column
@@ -148,97 +148,116 @@ body.layout-enc
 
 
 
-
-//Estilos index
-body 
+//estilos index
+// Estilos generales
+body
   font-family: "Poppins", sans-serif
+  font-size: 16px
+  line-height: 1.6
 
 // Estilos para el cuerpo y el contenedor principal
-.body-container 
+.body-container
   display: flex
   justify-content: center
   align-items: center
   height: 100vh
 
-.main-container 
+.main-container
   display: flex
   flex-direction: column
   align-items: center
-  margin-top: 30px
+  margin-top: 50px
 
 // Estilos para los contenedores de entrada y salida
-.input-container, .output-container 
-  display: flex
-  flex-direction: column
-  align-items: center
-  width: 90%
-  max-width: 600px
-  
-
-// Estilos para el primer input con scrollbar y el contenedor del contador
-.input-text, #output-text 
+.input-container, .output-container
   width: 100%
-  min-height: 150px
-  padding: 10px
-  margin-bottom: 10px
-  border: 1px solid #000
-  border-radius: 5px
+  max-width: 100%
+  padding: 20px
+  margin-bottom: 30px
+  border: 2px solid #e0e0e0
+  border-radius: 12px
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
+  background-color: #fff
+
+.input-text, #output-text
+  width: 100%
+  min-height: 200px
   overflow-y: auto
+  padding: 15px
+  margin-bottom: 20px
+  border-radius: 8px
 
-.counter-container 
-  align-self: flex-end
-  margin-bottom: 10px
+#output-text
+  min-height: 150px
 
-// Estilos para el selector de cifrado
-#encryption-type 
-  width: 100%
-  margin-bottom: 10px
+.counter-container
+  display: flex
+  justify-content: space-between
+  align-items: center
+  margin-bottom: 20px
 
-// Estilos para el botón de cifrado y copiar
-.button 
-  margin-bottom: 10px
-  padding: 10px 20px
-  border: none
-  border-radius: 5px
-  cursor: pointer
+#encryption-type,
+#num-of-turns,
+.button
+  flex: 1
+  margin: 0 7px
+  border-radius: 20px
 
-#encrypt-btn 
-  background-color: #12720f // Verde pastel
+.button:last-child
+  margin-right: 0
+
+#encrypt-btn
+  background-color: #007bff
   color: #fff
-  align-self: flex-end
-  margin-left: auto
-  margin-bottom: 10px
-  transition: all 0.3s ease // Agregamos una transición para suavizar el cambio
+  margin-bottom: 20px
+  border-radius: 20px
+  padding: 15px 30px
+  margin-left: 7px
 
-#copy-btn 
-  background-color: #0462ce
+#copy-btn
+  background-color: #17a2b8
   color: #fff
-  transition: all 0.3s ease // Agregamos una transición para suavizar el cambio
+  margin-left: 7px
+  border-radius: 20px
+  padding: 15px 30px
 
-#encrypt-btn:hover,
-#copy-btn:hover
-  filter: brightness(1.2)
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) // Ajusta los valores según sea necesario
+#clear-btn
+  background-color: #dc3545
+  color: #fff
+  margin-bottom: 20px
+  border-radius: 20px
+  padding: 15px 30px
 
-  
+#encrypt-btn:hover, #copy-btn:hover, #clear-btn:hover
+  filter: brightness(0.9)
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)
 
 // Estilos para el texto cifrado
-#output-text 
-  background-color: #f2f2f2
+#output-text
+  background-color: #f8f9fa
   color: #333
 
 // Estilos para el botón cifrar y el número de vueltas
 #num-of-turns
-  padding: 6px
-  width: 140px
+  padding: 10px
+  width: 160px
   font-size: 16px
   text-align: center
-  margin-left: 10px
 
-// Media query para dispositivos pequeños
-@media screen and (max-width: 768px)
+// Media queries para pantallas pequeñas, medianas y grandes
+@media screen and (max-width: 576px)
   .input-container, .output-container
-    width: 100%
+    padding: 15px
+
+@media screen and (min-width: 577px) and (max-width: 991px)
+  .input-container, .output-container
+    padding: 20px
+
+@media screen and (min-width: 992px)
+  .input-container, .output-container
+    padding: 25px
+    max-width: 900px
+
 
 
 //Estilos del login
@@ -398,7 +417,7 @@ $submit-button-bg-color: #1ABC9C
 $submit-button-hover-bg-color: #0f6957
 $reset-button-bg-color: #FFA420
 $reset-button-hover-bg-color: #FF7514
-$paragraph-color: rgb(255, 255, 255)
+$paragraph-color: #000
 $link-color: #18b95c
 $link-hover-color: #047c36
 $link-focus-color: #006e2e
@@ -426,7 +445,7 @@ article
   margi-top: 20px
 
 h1 
-  text-align: center
+  text-align: left
   font-size: 2.1rem
   font-weight: bold
   color: $paragraph-color
@@ -564,3 +583,109 @@ a
 
   a 
     font-size: 1rem 
+
+
+/* Variables */
+$font-family: 'Arial', sans-serif
+$primary-color: #007bff
+$secondary-color: #dc3545
+
+/* Estilos */
+.title-section
+  position: relative
+  h1
+    font-size: 2rem
+    color: $primary-color
+    margin-top: 10px
+
+.profile-picture-section
+  text-align: center
+  margin-bottom: 20px
+
+.profile-picture-section img
+  width: 200px /* Ajuste el tamaño de la imagen */
+  height: 200px /* Ajuste el tamaño de la imagen */
+  border-radius: 50%
+  margin-bottom: 10px /* Espacio entre la imagen y el título */
+  margin-top: -50px /* Ajuste vertical para acercar la imagen al título */
+
+.profile-info-section
+  width: 300px
+  margin: 0 auto
+
+.profile-heading
+  font-size: 24px
+  margin-bottom: 20px
+  color: $primary-color
+
+.link-section
+  a
+    color: $primary-color
+    text-decoration: none
+
+.body-container
+  font-family: $font-family
+  background-color: #f8f9fa /* Color de fondo */
+  padding: 20px
+  display: flex
+  justify-content: center
+  align-items: center /* Centrado vertical */
+
+.profile-picture-section,
+.profile-info-section
+  width: 100%
+
+.profile-heading,
+.profile-field-label,
+.profile-field,
+.profile-btn
+  width: 100% /* Ajuste para ocupar todo el ancho disponible */
+
+.profile-form
+  margin-bottom: 20px
+
+.profile-field-label
+  margin-top: 10px
+  font-size: 16px
+  color: #333 /* Color de texto */
+
+.profile-field
+  padding: 8px
+  margin-bottom: 10px
+  border: 1px solid #ccc
+  border-radius: 4px
+
+.profile-btn
+  display: inline-block
+  margin-top: 10px
+  padding: 10px 20px
+  border: none
+  border-radius: 20px
+  cursor: pointer
+  text-decoration: none
+
+.profile-btn[type='submit']
+  background-color: $primary-color
+  color: #fff
+
+.profile-btn[type='submit']:hover
+  filter: brightness(90%)
+
+.profile-btn[href='/']
+  background-color: $secondary-color
+  color: #fff
+  align-items: center
+  align-content: center
+
+.profile-btn[href='/']:hover
+  filter: brightness(90%)
+
+/* Media queries para responsividad */
+@media screen and (max-width: 768px)
+  .profile-info-section
+    width: 80%
+    max-width: none /* Elimina el máximo ancho */
+
+  .body-container
+    flex-direction: column /* Cambia a una sola columna */
+    align-items: center /* Centrado vertical */

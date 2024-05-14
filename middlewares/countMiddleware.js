@@ -1,33 +1,33 @@
-//importamos los modulos necesarios
 const express = require('express');
 const app = express();
 
 // Obtiene la ip
 let attemptsCypher = {};
 
-// Middleware 
+// Middleware para el logueo del usuario
 function attemptCypher(req, res, next) {
 // Verifica si el usuario está autenticado
   if (req.isAuthenticated()) {
     return next();
   }
   
-  const ip = req.ip; //Obtenemos la direccion para poder concretar cunatos intentos lleva dicho
+  const ip = req.ip; //obtenemos la direccion IP
 
-  // Verificación si ya ha sido inicializado con esa Ip
+  // hacemos check si esta iniciado el contador en esa misma IP
   if (attemptsCypher[ip] === undefined) {
-    attemptsCypher[ip] = 1
+    attemptsCypher[ip] = 0;
   } else {
+    // Agregamos 1 si lo esta
     attemptsCypher[ip]++;
   }
 
-  // Verificación si el usuarios con esa IP ha excedido de los 3 intentos
-  const attemptsLimit = 3;
-  if (attemptsCypher[ip] > attemptsLimit) {
-    // Después del tercer intento redirigimos al /sigin
-    return res.redirect('/sigin');
+  // Vverifiacion de los intentos que no sea mayor a 3
+  const limitAttempts = 4;
+  if (attemptsCypher[ip] > limitAttempts) {
+    // si se pasa, le pide registarse
+    return res.redirect('/login');
   }
-  //No lleva mas de tres intentos
+  // Si no se ha excedido el límite de intentos, pasa al siguiente middleware
   next();
 }
 

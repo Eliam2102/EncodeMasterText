@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    head
+        .link-section
+            link(rel="icon", type="image/png", href="/img/letters.png")
+            meta(charset="UTF-8")
+            meta(name="viewport", content="width=device-width, initial-scale=0.97")
+            link(rel="stylesheet", href="css/styles.css")
+    .body-container
+        .profile-picture-section
+            img.profile-picture(src='img/profile-default.png')
+        .profile-info-section
+            h1.profile-heading Información de usuario
+            form.profile-form(action='/update-profile' method='PATCH')
+                p.profile-field-label Nombre:
+                input.profile-field(type='text' name='nombre' value=usuario.nombre)
+                p.profile-field-label Email:
+                input.profile-field(type='email' name='email' value=usuario.email)
+                button.profile-btn(type='submit') Guardar Cambios
+                a.profile-btn(href='/') Cancelar

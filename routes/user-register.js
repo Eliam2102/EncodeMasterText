@@ -1,7 +1,8 @@
+
 // routes/registrar-usuario.js
 const express = require('express');
 const router = express.Router();
-const usuarios = require('../database/tables/user'); // Archivo contenedor de querys para MySQL
+const usuarios = require('../database/tables/user');
 const authMiddleWare = require('../middlewares/authMiddleware');
 
 // Ruta para manejar el registro de usuarios

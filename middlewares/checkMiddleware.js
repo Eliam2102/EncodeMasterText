@@ -4,13 +4,13 @@ const router = express.Router();
 const attemptCypher = require('./countMiddleware');
 const  {authenticate} = require('./authMiddleware');
 
-// Middleware para verificar si el usuario está autenticado
+// funcion para verificar si esta autenticado
 function checkAuth(req, res, next) {
   if (req.isAuthenticated()) {
-    // Si el usuario está autenticado, pasa al siguiente middleware
+    // si esta continua al sig
     return next();
-  } else {
-    // Si el usuario no está autenticado, aplica el middleware de limitación de intentos
+} else {
+    // si no esta logueado. limitamos intentos
     return attemptCypher(req, res, next);
   }
 }

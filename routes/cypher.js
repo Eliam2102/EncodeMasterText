@@ -6,9 +6,10 @@ const convertCodeBinario = require('../controllers/convertCodeBinario');
 const convertCodeCesar = require('../controllers/convertCodeCesar');
 const convertCodeHexadecimal = require('../controllers/convertCodeHexadecimal');
 const convertCodeSustitution = require('../controllers/convertCodeSustitution');
+const textosCodificados = require ('../database/tables/textosCodificados')
 
 // Ruta del metodo Post apuntando a encrypt desde le formulario.
-router.post('/cypher', (req, res) =>{
+router.post('/cypher', async (req, res) =>{
     try {
         const textoEntrada = req.body.textoEntrada;
         const tipoCifrado = req.body.tipoCifrado;
@@ -50,10 +51,13 @@ router.post('/cypher', (req, res) =>{
             //Error al cifrar en hexadecimal
             throw new Error('No valida para hexadecimal');
         }
-        //mandar el texto ya cifrado al segundo textarea o al output
+        // Llamar a la función para registrar el movimiento
+        const usuario_id = req.user ? req.user.id : null; // Obtener el ID del usuario si está autenticado
+        await textosCodificados(usuario_id, textoEntrada, encryptedText, tipoCifrado);
+        //Render del textoEntrada y encryptedText
         res.render('index',{ textoEntrada: textoEntrada, textoSalida : encryptedText});
     }catch (error) {
-        // Manejar errores
+        // Manejo de errores
         console.error(error);
         res.status(400).send('Error');
     }

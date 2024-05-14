@@ -2,56 +2,75 @@ extends layout
 
 block content
     head
-      title EncodeMasterText
-      link(rel="icon", type="image/png", href="/img/letters.png")
-      meta(charset="UTF-8")
-      meta(name="viewport", content="width=device-width, initial-scale=0.97")
-      link(rel="stylesheet", href="css/styles.css")
+        title EncodeMasterText
+        link(rel="icon", type="image/png", href="/img/letters.png")
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=0.97")
+        link(rel="stylesheet", href="css/styles.css")
     body.body-container
-      main.main-container
-        form(action="/cypher", method="post")
-          .input-container
-            textarea.input-text(id="input-text", name="textoEntrada", rows="10", cols="50", placeholder="Introduce el texto a cifrar 🎩🕵️‍♂️💀", maxlength="5000")= textoEntrada
-            div.counter-container
-              span#char-count 0/5000 👾
-            select#encryption-type(name="tipoCifrado", class="select")
-              option(value="base64") Base64 6️⃣ 4️⃣
-              option(value="cesar") Código César 🌿🌿
-              option(value="sustitucion") Sustitución 🔁 🔄
-              option(value="hexadecimal") Hexadecimal 1️⃣🅰️2️⃣🅱️3️⃣
-              option(value="binario") Binario 1️⃣0️⃣1️⃣0️⃣1️⃣1️⃣
-            select#rounds-number(name="vueltasCifrado", class="select")
-              option(value="1") 1
-              option(value="2") 2
-              option(value="3") 3
-              option(value="4") 4
-              option(value="5") 5
-              option(value="6") 6
-              option(value="5") 7
-              option(value="5") 8
-              option(value="5") 9
-              option(value="5") 10
-            button#encrypt-btn.button(type="submit") Cifrar
-        .output-container
-          textarea#output-text.output-text(rows="10", cols="50", placeholder="Resultado  🛡️💀🔒💀 -----> 🖥️💀🔫", readonly="", name="encryptedText")=textoSalida
-          button#copy-btn.button(type="button") Copiar resultado
+        main.main-container
+            form(action="/cypher", method="post")
+                .input-container
+                    textarea.input-text(id="input-text", name="textoEntrada", rows="15", cols="75", placeholder="Introduce el texto a cifrar 🎩🕵️‍♂️💀", maxlength="5000")= textoEntrada
+                    div.counter-container
+                        span#char-count 0/5000 👾
+                    select#encryption-type(name="tipoCifrado", class="select")
+                        option(value="base64") Base64 6️⃣ 4️⃣
+                        option(value="cesar") Código César 🌿🌿
+                        option(value="sustitucion") Sustitución 🔁 🔄
+                        option(value="hexadecimal") Hexadecimal 1️⃣🅰️2️⃣🅱️3️⃣
+                        option(value="binario") Binario 1️⃣0️⃣1️⃣0️⃣1️⃣1️⃣
+                    select#rounds-number(name="vueltasCifrado", class="select")
+                        option(value="1") 1
+                        option(value="2") 2
+                        option(value="3") 3
+                        option(value="4") 4
+                        option(value="5") 5
+                        option(value="6") 6
+                        option(value="5") 7
+                        option(value="5") 8
+                        option(value="5") 9
+                        option(value="5") 10
+                    button#encrypt-btn.button(type="submit") Cifrar
+                    button#clear-btn.button(type="button") Limpiar
+            .output-container
+                textarea#output-text.output-text(rows="10", cols="50", placeholder="Resultado  🛡️💀🔒💀 -----> 🖥️💀🔫", readonly="", name="encryptedText")=textoSalida
+                button#copy-btn.button(type="button") Copiar resultado
     script.
-      document.addEventListener('DOMContentLoaded', function() {
-        const inputText = document.getElementById('input-text');
-        const charCount = document.getElementById('char-count');
-        const outputText = document.getElementById('output-text');
-        const form = document.querySelector('form');
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputText = document.getElementById('input-text');
+            const charCount = document.getElementById('char-count');
+            const outputText = document.getElementById('output-text');
+            const form = document.querySelector('form');
 
-        inputText.addEventListener('input', function() {
-          const inputLength = inputText.value.length;
-          charCount.textContent = `${inputLength}/5000`;
+            inputText.addEventListener('input', function() {
+                const inputLength = inputText.value.length;
+                charCount.textContent = `${inputLength}/5000`;
+            });
+
+            const copyButton = document.getElementById('copy-btn');
+
+            copyButton.addEventListener('click', function() {
+                outputText.select();
+                document.execCommand('copy');
+                alert('Texto copiado al portapapeles');
+            });
+
+            // Validación de selección de tipo de cifrado
+            document.querySelector('form').addEventListener('submit', function(event) {
+                const selectedValue = document.getElementById('encryption-type').value;
+                if (selectedValue === '') {
+                    event.preventDefault();
+                    alert('Por favor, selecciona un tipo de cifrado');
+                } else {
+                    document.querySelector('.loader').style.display = 'block';
+                }
+            });
+
+            const clearButton = document.getElementById('clear-btn');
+            clearButton.addEventListener('click', function() {
+                inputText.value = '';
+                outputText.value = '';
+                charCount.textContent = '0/5000';
+            });
         });
-
-        const copyButton = document.getElementById('copy-btn');
-
-        copyButton.addEventListener('click', function() {
-          outputText.select();
-          document.execCommand('copy');
-          alert('Texto copiado al portapapeles');
-        });
-      });
